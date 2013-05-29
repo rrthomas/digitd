@@ -1,0 +1,120 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE 'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the  package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: efingerd\n"
+"Report-Msgid-Bugs-To: garabik@kassiopeia.juls.savba.sk\n"
+"POT-Creation-Date: 2007-12-16 16:38+0100\n"
+"PO-Revision-Date: 2007-11-02 18:22+0100\n"
+"Last-Translator: Bart Cornelis <cobaco@skolelinux.no>\n"
+"Language-Team: debian-l10n-dutch <debian-l10n-dutch@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Dutch\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid "Permit users to have their own configurable finger replies?"
+msgstr "Wilt u gebruikers toestaan hun eigen finger-antwoorden in te stellen?"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid "You can decide if efingerd honours users' ~/.efingerd files."
+msgstr ""
+"Hier beslist u of efingerd de '~/.efingerd'-bestanden van gebruikers "
+"respecteert."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"If someone from network fingers given user, and the user has ~/.efingerd "
+"file readable and executable for efingerd daemon, this file will be executed "
+"and its output will be sent to the fingerer."
+msgstr ""
+"Wanneer een gebruiker een voor de efingerd-achtergronddienst lees- en "
+"uitvoerbaar '~/.efingerd'-bestand heeft, zal de uitvoer van aanroepen van "
+"dit bestand doorgestuurd worden telkens wanneer iemand via finger info over "
+"die gebruiker opvraagt."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"This can be either desired or not, depending on your system policy. In "
+"particular, allowing .efingerd files allows users to cheat about their real "
+"identity. However, efingerd can be configured to display users' full names "
+"(from passwd) as the first line of the reply, so they cannot hide themselves "
+"completely."
+msgstr ""
+"Afhankelijk van uw systeembeleid kan dit gewenst of ongewenst zijn. Meer "
+"bepaald kan het toestaan van '~/.efingerd'-bestanden gebruikers toelaten hun "
+"echte identiteit te verbergen. Om te voorkomen dat gebruikers hun identiteit "
+"verbergen kan Efingerd ingesteld worden om altijd de volledige naam van de "
+"gebruikers (zoals opgegeven in passwd) te laten zien."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"There is however a slight security concern: if you allow .efingerd files, "
+"these files will be executed under efingerd UID, so malicious users gain "
+"access to all files owned by efingerd - this becomes important when you make "
+"efingerd to log into some files writable by the daemon, unless you take "
+"appropriate precautions."
+msgstr ""
+"Er is een klein beveiligingsrisico: Als u '~/.efingerd'-bestanden toelaat "
+"worden deze uitgevoerd met de efingerd-UID, hierdoor kunnen kwaadwillende "
+"gebruikers toegang krijgen tot alle bestanden van wie efingerd de eigenaar "
+"is. Tenzij u overeenkomstige voorzorgen neemt wordt dit belangrijk wanneer u "
+"efingerd laat loggen naar door de achtergronddienst beschrijfbare bestanden."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"If you are the only user, or you trust your users, there is no reason to "
+"disable .efingerd files (and this is probably a reason you want to install "
+"efingerd for). However, if you expect your users to be nasty, you should "
+"better think about protecting from them - in particular, if you enable "
+"logging, make sure they cannot fiddle with the logfile - this is UP TO YOU."
+msgstr ""
+"Als u de enige gebruiker bent, of als u uw gebruikers vertrouwd, is er geen "
+"enkele reden om '~/.efingerd'-bestanden uit te schakelen (en dit is "
+"waarschijnlijk één van de redenen waarom u efingerd installeert). Als u "
+"echter kwaadwillendheid van uw gebruikers verwacht, denkt u beter goed over "
+"beveiligen na. Vooral als u loggen activeert, het is aan u om ervoor te "
+"zorgen dat uw gebruikers niet met de logbestanden kunnen prutsen."
+
+#. Type: boolean
+#. Description
+#: ../templates:33
+msgid "Display users' real names?"
+msgstr "Wilt u de 'echte' namen van gebruikers weergeven?"
+
+#. Type: boolean
+#. Description
+#: ../templates:33
+msgid ""
+"By default, efingerd displays users real names (from passwd) as the first "
+"line of finger reply. You may want to suppress it, but if you allow the use "
+"of .efingerd files at the same time, be aware that users can hide their "
+"identity for the fingerer."
+msgstr ""
+"Standaard toont efingerd de 'echte' namen van gebruikers (zoals opgegeven in "
+"passwd) als de eerste regel van het finger-antwoord. U kunt dit onderdrukken "
+"en tegelijkertijd het gebruik van '~/.efingerd'-bestanden toelaten; hou er "
+"dan wel rekening mee dat gebruikers hun identiteit van de finger-opvrager "
+"kunnen verbergen."
+
+#. Type: boolean
+#. Description
+#: ../templates:33
+msgid "If in doubt, select this option."
+msgstr "Bij twijfel laat u deze optie best actief."

@@ -1,0 +1,161 @@
+# efingerd po-debconf translation to Spanish
+# Copyright (C) 2005 Software in the Public Interest
+# This file is distributed under the same license as the efingerd package.
+#
+# Changes:
+#  - Initial translation
+#         César Gómez Martín <cesar.gomez@gmail.com>
+#
+#   Traductores, si no conoce el formato PO, merece la pena leer la
+#   documentación de gettext, especialmente las secciones dedicadas a este
+#   formato, por ejemplo ejecutando:
+#          info -n '(gettext)PO Files'
+#          info -n '(gettext)Header Entry'
+# Equipo de traducción al español, por favor, lean antes de traducir
+# los siguientes documentos:
+#
+#  - El proyecto de traducción de Debian al español
+#    http://www.debian.org/intl/spanish/
+#    especialmente las notas de traducción en
+#    http://www.debian.org/intl/spanish/notas
+#
+#  - La guía de traducción de po's de debconf:
+#    /usr/share/doc/po-debconf/README-trans
+#    o http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: efingerd\n"
+"Report-Msgid-Bugs-To: garabik@kassiopeia.juls.savba.sk\n"
+"POT-Creation-Date: 2007-12-16 16:38+0100\n"
+"PO-Revision-Date: 2005-09-27 17:01+0100\n"
+"Last-Translator: César Gómez Martín <cesar.gomez@gmail.com>\n"
+"Language-Team: Debian l10n spanish <debian-l10n-spanish@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-Country: SPAIN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid "Permit users to have their own configurable finger replies?"
+msgstr ""
+"¿Desea permitir que los usuarios tengan sus propias respuestas configurables "
+"de finger?"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid "You can decide if efingerd honours users' ~/.efingerd files."
+msgstr ""
+"Puede decirdir si efingerd debe cumplir con las directrices de los ficheros "
+"~/.efingerd de los usuarios."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"If someone from network fingers given user, and the user has ~/.efingerd "
+"file readable and executable for efingerd daemon, this file will be executed "
+"and its output will be sent to the fingerer."
+msgstr ""
+"Si alguien de la red hace un finger a un usuario y el usuario tiene un "
+"fichero ~/.efingerd con permisos de lectura y ejecutable por el demonio "
+"efingerd, entonces este fichero se ejecutará y su salida se enviará al "
+"emisor del finger."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"This can be either desired or not, depending on your system policy. In "
+"particular, allowing .efingerd files allows users to cheat about their real "
+"identity. However, efingerd can be configured to display users' full names "
+"(from passwd) as the first line of the reply, so they cannot hide themselves "
+"completely."
+msgstr ""
+"Esto puede ser deseable o no dependiendo de las normas de su sistema. En "
+"concreto permitir los ficheros .efingerd permite a los usuarios mentir sobre "
+"su verdadera identidad. Sin embargo, se puede configurar efingerd para "
+"mostrar los nombres completos de los usuarios (de passwd) en la primera "
+"línea de la respuesta, por lo que no se pueden esconder por completo."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"There is however a slight security concern: if you allow .efingerd files, "
+"these files will be executed under efingerd UID, so malicious users gain "
+"access to all files owned by efingerd - this becomes important when you make "
+"efingerd to log into some files writable by the daemon, unless you take "
+"appropriate precautions."
+msgstr ""
+"Sin embargo hay una pequeña preocupación en cuanto a la seguridad: si "
+"permite los ficheros .efingerd, estos ficheros se ejecutarán bajo el UID de "
+"efingerd, por lo que los usuarios maliciosos pueden obtener acceso a todos "
+"los ficheros que pertenezcan a efingerd - a no ser que tome precauciones, "
+"esto es importante cuando quiere que efingerd lleve un registro en varios "
+"ficheros sobre los que el demonio tenga permisos de escritura."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"If you are the only user, or you trust your users, there is no reason to "
+"disable .efingerd files (and this is probably a reason you want to install "
+"efingerd for). However, if you expect your users to be nasty, you should "
+"better think about protecting from them - in particular, if you enable "
+"logging, make sure they cannot fiddle with the logfile - this is UP TO YOU."
+msgstr ""
+"Si es el único usuario o confía en sus usuarios no hay ninguna razón para "
+"desactivar los ficheros .efingerd (y probablemente esta es una razón por la "
+"que quiere instalar efingerd). Sin embargo, si espera que sus usuarios sean "
+"malos debería pensar mejor en protegerse de ellos - en concreto, si activa "
+"el registro, esté seguro de que ellos no pueden amañarlo - esta es una "
+"decisión QUE USTED DEBE TOMAR."
+
+#. Type: boolean
+#. Description
+#: ../templates:33
+msgid "Display users' real names?"
+msgstr "¿Desea mostrar los nombres reales de los usuarios?"
+
+#. Type: boolean
+#. Description
+#: ../templates:33
+msgid ""
+"By default, efingerd displays users real names (from passwd) as the first "
+"line of finger reply. You may want to suppress it, but if you allow the use "
+"of .efingerd files at the same time, be aware that users can hide their "
+"identity for the fingerer."
+msgstr ""
+"Por omisión efingerd muestra los nombres verdaderos de los usuarios (de "
+"passwd) en la primera línea de la respuesta de finger. Quizás quiera "
+"suprimirlo, pero si a la vez permite el uso de los ficheros .efingerd, tenga "
+"en cuenta que los usuarios pueden esconder su identidad al emisor del finger."
+
+#. Type: boolean
+#. Description
+#: ../templates:33
+msgid "If in doubt, select this option."
+msgstr "Si tiene dudas seleccione esta opción."
+
+#~ msgid "Provided configuration files need to be adapted"
+#~ msgstr ""
+#~ "Los ficheros de configuración que se proporcionan necesitan adaptarse"
+
+#~ msgid ""
+#~ "efingerd uses files in /etc/efingerd to decide about finger output "
+#~ "according to who is fingering whom. Those files, as installed by the "
+#~ "debian package, ARE JUST EXAMPLES! You should definitely write your own, "
+#~ "or at the very least, modify the installed files to reflect YOUR SPECIFIC "
+#~ "settings."
+#~ msgstr ""
+#~ "efingerd utiliza los ficheros de /etc/efingerd para decidir la salida de "
+#~ "finger dependiendo de quien manda el finger a quien. Esos ficheros como "
+#~ "los instala el paquete debian ¡SÓLO SON EJEMPLOS!. Debe escribir el suyo "
+#~ "propio, o al menos modificar los ficheros instalados para reflejar SUS "
+#~ "configuraciones ESPECÍFICAS."

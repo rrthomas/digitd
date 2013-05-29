@@ -1,0 +1,28 @@
+#!/bin/bash
+
+
+. /etc/efingerd/log 
+echo
+
+if [ $1 = 'matos' ]; then
+  echo 'Go away.'
+  exit 0
+fi
+
+
+if [ $1 = '(null)' ]; then
+  echo Hello $2,
+else 
+  echo Hello $1\@$2,
+fi
+echo
+
+if [ $RANDOM -le 16000 ]; then
+  calendar
+else
+  cal
+fi
+
+echo
+echo --
+echo finger help@this.computer.address for a short help

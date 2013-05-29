@@ -1,0 +1,184 @@
+efingerd (1.6.2.6) unstable; urgency=low
+
+  * added Dutch debconf templates translation (closes: #451394)
+  * clean up some lintian warnings
+
+ -- Radovan Garabík <garabik@kassiopeia.juls.savba.sk>  Sun, 16 Dec 2007 16:30:33 +0100
+
+efingerd (1.6.2.5) unstable; urgency=low
+
+  * Non-maintainer upload to fix pending l10n issues.
+  * Debconf templates translations:
+    - Portuguese
+    - Spanish. Closes: #402304
+    - German. Closes: #393348
+    - Swedish. Closes: #343860
+  * Lintian/piuparts fixes:
+    - Remove the log file on purge. Closes: #339942
+  * Remove the abusive debconf note and move its text to README.Debian
+    Closes: #388889
+
+ -- Christian Perrier <bubulle@debian.org>  Sat,  3 Feb 2007 16:52:14 +0100
+
+efingerd (1.6.2.4) unstable; urgency=low
+
+  * fixed debconf dependency
+
+ -- Radovan Garabík <garabik@kassiopeia.juls.savba.sk>  Tue, 27 Sep 2005 08:44:10 +0200
+
+efingerd (1.6.2.3) unstable; urgency=low
+
+  * rebuild with newer po-debconf, Vietnamese translation is now really
+    included
+  * when already there, converted some debconf templates to utf-8, fix
+    lithuanian template
+  * upgrade debhelper compat version
+
+ -- Radovan Garabík <garabik@kassiopeia.juls.savba.sk>  Mon, 29 Aug 2005 17:30:02 +0200
+
+efingerd (1.6.2.2) unstable; urgency=low
+
+  * Added Vietnamese debconf template translation (closes: #311612)
+  * fix German debconf template translation (closes: #313695)
+  * fix copyright file wording (closes: #302956)
+  * use dh_installman
+  * upgrade maintainer field
+
+ -- Radovan Garabík <garabik@kassiopeia.juls.savba.sk>  Mon, 29 Aug 2005 16:14:38 +0200
+
+efingerd (1.6.2.1) unstable; urgency=low
+
+  * Non-maintainer upload
+  * Switched to po-debconf. (closes: #250266)
+  * Updated Brazilian Portuguese debconf template translation.
+    (closes: #301909)
+  * Added French debconf template translation.
+  * Added Czech debconf template translation.
+
+ -- Lucas Wall <lwall@debian.org>  Tue, 12 Apr 2005 10:32:57 -0300
+
+efingerd (1.6.2) unstable; urgency=low
+
+  * added Brazilian Portuguese debconf template (thanks to André Luís Lopes),
+    closes: #108532
+  * fix unterminated string error
+  * added Lithuanian debconf template
+    (thanks to Tomas Stanys <tomas_stanys@tempest.sk>)
+  * warning about security issues added to README (closes: #133678)
+
+ -- Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>  Mon, 13 Aug 2001 11:38:20 +0200
+ 
+efingerd (1.6.1) unstable; urgency=low
+
+  * added German template for debconf (thanks to Jörg Rieger), closes: #95097
+
+ -- Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>  Thu, 17 May 2001 21:47:38 +0200
+
+efingerd (1.6) unstable; urgency=low
+
+  * code does not use snprintf anymore (should be more portable)
+  * various spelling and grammar corrections in documentation
+    (thanks to Petr Hudec <pehasys@galileo.dnp.fmph.uniba.sk>)
+
+ -- Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>  Wed, 14 Mar 2001 09:33:39 +0100
+
+efingerd (1.5.1) unstable; urgency=low
+
+  * logfile is not executable anymore - oops
+
+ -- Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>  Thu,  8 Mar 2001 18:55:05 +0100
+
+efingerd (1.5) unstable; urgency=low
+
+  * some code cleanup
+  * use debconf in postins to interact with user
+  * daemon runs under its own uid in debian package now
+
+ -- Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>  Wed,  7 Mar 2001 22:30:59 +0100
+
+efingerd (1.4.2) unstable; urgency=low
+
+  * moved Build-Depends where it belongs
+  * applied more drastic approach when using update-inetd in
+    postinst and prerm to circumvent design deficiencies in
+    update-inetd
+
+ -- Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>  Fri, 23 Feb 2001 21:03:10 +0100
+
+efingerd (1.4.1) unstable; urgency=low
+
+  * rebuilt with a new GPG key
+
+ -- Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>  Fri,  1 Sep 2000 07:51:31 +0200
+
+efingerd (1.4) unstable; urgency=low
+
+  * added missing #DEBHELPER# to postinst and prerm
+  * added debhelper to Build-Depends
+
+ -- Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>  Wed, 12 Jan 2000 10:23:09 +0100
+
+efingerd (1.3) unstable; urgency=low
+
+  * added build dependencies
+  * new Standards-Version
+  * added conflict with fingerd and xfingerd
+
+ -- Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>  Sun,  5 Dec 1999 15:57:59 +0100
+
+efingerd (1.2) unstable; urgency=low
+
+  * upgraded Standards-Version
+  * Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk> is the person
+    responsible for this package; I am his sponsor and uploading it on his
+    behalf.
+
+ -- Chris Lawrence <lawrencc@debian.org>  Wed, 13 Oct 1999 21:44:29 +0200  
+
+efingerd (1.1) unstable; urgency=low
+
+  * better postinst and prerm - after uninstalling, it should leave
+    finger entry in /etc/inetd.conf in the same state as it was before.
+
+ -- Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>  Wed, 28 Jul 1999 17:26:23 +0200
+
+efingerd (1.0) unstable; urgency=low
+
+  * documentation and manpage updates
+  * first stable version 
+
+ -- Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>  Wed, 28 Jul 1999 17:26:15 +0200
+
+efingerd (0.9) unstable; urgency=low
+
+  * converted to debhelper
+  * -u option added
+  * code cleanup
+  * freebsd compile 
+  * ident time increased to 20 seconds - can make things slower sometimes,
+    but ident replies from Japan to Slovakia and back again (mostly)
+    work now :-)
+
+ -- Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>  Fri, 30 Apr 1999 10:26:08 +0200
+
+efingerd (0.8) unstable; urgency=low
+
+  * Package debianized 
+  * Makefile update with regard to libident
+  * New option -f (do not display full name) (suggested by PeHaSys)
+  * option -s changed to -t
+  * Change in location of script files! If you are upgrading, check out
+    your old configuration.
+
+ -- Radovan Garabik <garabik@fmph.uniba.sk>  Fri,  5 Mar 1999 10:18:25 +0100
+
+efingerd (0.7) unstable; urgency=low
+
+  * Some cleanup in options, changelog started :-)
+		
+ -- Radovan Garabik <garabik@fmph.uniba.sk>  Sun,  28 Feb 1999 20:08:15 +0100
+ 
+
+Local variables:
+mode: debian-changelog
+End:

@@ -1,0 +1,12 @@
+#! /bin/sh
+# pre removal script for the Debian GNU/Linux efingerd package
+
+set -e
+
+update-inetd --remove 'finger\t.*'
+
+#update-inetd --pattern efingerd --disable finger
+#update-inetd --group INFO --add 'finger		stream	tcp	nowait	nobody	/usr/sbin/tcpd	/usr/sbin/in.fingerd'
+#update-inetd --comment-chars '#<efingerd># ' --enable finger
+
+#DEBHELPER#

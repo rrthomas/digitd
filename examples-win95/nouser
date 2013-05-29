@@ -1,0 +1,28 @@
+#!/bin/bash
+
+. /etc/efingerd/log 
+
+cat <<EOM
+
+Microsoft Windows 95 finger daemon
+     The ultimate experience.
+
+ Who do you want to finger today?
+
+EOM
+
+if [ $RANDOM -le 16000 ]; then
+cat <<EOM
+
+MS fingerd caused general protection fault in address 0F44A34100:55F0321E
+
+EOM
+else
+  cat <<EOM
+
+ Error finding out specified user.
+
+EOM
+
+fi
+

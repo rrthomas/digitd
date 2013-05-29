@@ -1,0 +1,73 @@
+#!/bin/sh  -e
+# postinst for djbdns
+# written by Adam McKenna
+# <adam@debian.org>
+
+#DEBCONF_DEBUG=1
+#export DEBCONF_DEBUG
+
+case "$1" in
+    configure)
+	# continue below
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+	exit 0
+    ;;
+
+    *)
+	echo "postinst called with unknown argument \`$1'" >&2
+	exit 0
+    ;;
+esac
+
+
+umask 022
+
+# add daemon user
+
+if ! grep -q '^efingerd:' /etc/passwd; then 
+    adduser --quiet --system --no-create-home --disabled-password --home /etc/efingerd --gecos "efingerd daemon" efingerd
+fi
+
+# create log file
+
+LOGFILE=/var/log/efingerd.log
+if [ ! -f $LOGFILE ]; then 
+  touch $LOGFILE
+  chmod 0644 $LOGFILE
+  chown efingerd:adm $LOGFILE
+fi
+
+RET=true
+test -e /usr/share/debconf/confmodule && {
+  . /usr/share/debconf/confmodule
+#  db_version 2.0
+  db_get efingerd/allow_files
+  }
+if [ "$RET" = "false" ]; then
+  EFSWITCH="-u"
+else
+  EFSWITCH=""
+fi
+
+RET=true
+test -e /usr/share/debconf/confmodule && {
+  db_get efingerd/show_names
+  }
+if [ "$RET" = "false" ]; then
+  RNSWITCH="-f"
+else
+  RNSWITCH=""
+fi
+  
+
+update-inetd --remove 'finger\t.*'
+update-inetd --group INFO --add "finger		stream	tcp	nowait	efingerd	/usr/sbin/tcpd	/usr/sbin/efingerd $RNSWITCH $EFSWITCH"
+
+#DEBHELPER#
+test -e /usr/share/debconf/confmodule && {
+  db_stop
+}
+
+exit 0

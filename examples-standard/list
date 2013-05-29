@@ -1,0 +1,71 @@
+#!/bin/sh
+
+. /etc/efingerd/log  # do some logging
+
+echo
+
+if [ "$1" = "vanya" ]; then      # special action if vanya wants to finger us
+  echo "What do you want?????" # from any computer
+  echo "Go away"
+  exit 0                       # and finish without telling him who is logged
+fi
+
+if [ "$1" = "jzatko" ]; then  # not so special action if jzatko wants to finger us
+  echo "Hellooooooooooooooo"
+  echo
+fi
+
+
+if [ "$1" = "matos" ]; then  # this user likes short listings
+  who -q
+  exit 0
+fi
+
+
+if [ "$2" = "pascal.fmph.uniba.sk" ]; then # ban the whole computer pascal
+  echo "Sorry, we do not want you to know who is here."
+  exit 0
+fi
+
+if [ "$1@$2" = "linus@transmeta.com" ]; then  
+# a very special occasion
+# you should put here site specific action
+# this here is just an example:
+cat <<EOM
+Unable to handle kernel paging request at virtual address c8848ffc
+current->tss.cr3 = 00ff1000, %cr3 = 00ff1000
+*pde = 0009e067
+*pte = 00000000
+Oops: 0000
+CPU:    0
+EIP:    0010:[<0018596b>]
+EFLAGS: 00010297
+eax: 08848ffc   ebx: ffffffff   ecx: 08848ffc   edx: fffffffe
+esi: ffffffff   edi: 07230073   ebp: 00000000   esp: 07150ed4
+ds: 0018   es: 0018   fs: 002b   gs: 002b   ss: 0018
+Process cat (pid: 526, process nr: 35, stackpage=07150000)
+Stack: 00389ad8 00000062 00000007 07230000 00000000 00000061 00000004 ffffffff
+       0000001b 00000001 00185b14 07230062 0018641e 07150f28 0010ca43 07230062
+       00186410 00000007 00000001 00000020 08848ffc 00000000 07150f90 00001000
+Call Trace: [<00185b14>] [<0010ca43>] [<08848ffc>] [<0015c9b6>] [<0015cc26>] [<001236e0>] [<0010a8a9>]
+Code: 80 38 00 74 07 40 4a 83 fa ff 75 f4 29 c8 89 c6 f7 c5 10 00
+EOM
+exit 0
+fi
+
+
+if [ "$1" = "(null)" ]; then
+  echo Hello "$2",      # we do not know who it is - does not run ident
+else 
+  echo Hello "$1@$2",  # else greet him
+fi
+
+echo users currently logged in are:
+echo
+who -uHw        # and display the user listing in readable form
+                 # or:
+# finger         # classical alternative
+                 # or:
+# ps aux         # this reveals too much - do not use this command, unless 
+                 # you trust people who finger you
+echo

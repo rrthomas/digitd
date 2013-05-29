@@ -1,0 +1,123 @@
+=========================================================
+                    efingerd
+
+  Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>
+http://melkor.dnp.fmph.uniba.sk/~garabik/efingerd.html
+
+=========================================================
+
+efingerd is a nice finger daemon, giving you complete control over what are
+you going to send to somebody fingering your computer. 
+It is based on my xtell program, which is in turn based on ident2 by Michael 
+Bacarella.
+
+Requirements:
+linux, freebsd, maybe others
+
+If you are just an ordinary user and efingerd is already installed by your 
+friendly administrator, you can take the advantage of it by making 
+executable .efingerd in your home directory (it can be anything - from 
+single shell script to a program in super-hyper-extra-object oriented 
+language - only speed makes a difference). This program takes two 
+arguments, the first is the name of remote user fingering you (or (null) 
+if his/her/its system does not run ident), the second one is address of 
+his computer (or IP number, if efingerd is installed with option -n). 
+Standard output of this program is then displayed to the person fingering 
+you. Look at examples-standard/.efingerd for a nice example. 
+
+The program itself depends on libident (you can get it from 
+ftp://ftp.lysator.liu.se/pub/ident/libs). If you cannot install it, you 
+can still compile efingerd, just add -DDONT_HAVE_LIBIDENT to the gcc options
+(see Makefile). However, without ident you
+loose one of the strongest features of efingerd, i.e. deciding about the
+finger output depending on who is fingering.
+
+How to compile and install:
+
+If you have debian system with all neccessary packages installed, type 
+dpkg-buildpackage (or dpkg-buildpackage -rfakeroot) in the package's 
+directory, then type 
+dpkg -i ../efingerd*deb
+
+Else:
+
+1) look at Makefile and define.h
+
+2) type make
+   This should produce the executable efingerd.
+   If it worked, ok, if not, there is an error somewhere :-)
+
+3) become root
+
+4) type make install  
+
+5) replace this line in /etc/inetd.conf
+ 
+finger	stream	tcp	nowait	nobody	/usr/sbin/tcpd	/usr/sbin/in.fingerd
+
+   with this line:
+
+finger	stream	tcp	nowait	nobody	/usr/sbin/tcpd	/usr/local/sbin/efingerd
+
+Alternatively, you can create your own user under which the daemon should 
+run, and replace nobody with this username (e.g. efingerd)
+
+   Notice that the entries are separated by tabs, not spaces.
+   efingerd recognizes following options:
+   --help  short help
+   --version or -v Print version information and exit.
+   -t X       Lifetime for spawned services (in seconds)
+	      ex: -t 25  maintain connections for up to 25 seconds
+   -n         Do not lookup addresses, use IP numbers instead
+   -f         Do not display users' full names
+   -u         Ignore user-specific .efingerd file   
+
+6) set up your own scripts providing the information about your machine in 
+   /etc/efingerd/
+   You need these scripts:
+   
+   /etc/efingerd/list
+          - what to display when somebody does finger @your.machine
+   /etc/efingerd/luser
+          - what to display when somebody fingers user on your machine, and 
+            the fingered user does not have ~/.efingerd file
+   /etc/efingerd/nouser
+          - what to display when somebody fingers non-existent user on 
+            your machine    
+
+  If the local user has file .efingerd in his/her home directory, and it is 
+  readable ( this is a BUG - should be executable :-) ) by the daemon, it 
+  will be executed and it's output will be served to the fingerer (unless
+  forbidden by -u option)
+
+  These are normal programs, displaying on standard output desired 
+  information. These programs are called with following parameters:
+  $1 - identity of remote user, (null) if his/her/its system is not running
+       ident
+  $2 - address of remote machine (IP number if it has not reverse DNS 
+       entry or you specified -n)
+  $3 - name of local user being fingered
+  
+  The lines should end in CRLF (as for RFC), but in practise this does not 
+  make much difference.
+  
+
+  Look at examples*/ for examples.
+  Don't forget that these programs must be executable by the daemon UID.
+   
+
+7) restart inetd with killall -HUP inetd
+
+
+Security notes (PLEASE READ):
+unless run with option -u, efingerd executes file under user home
+directory named .efingerd. This file is executed under the same
+UID as the efingerd daemon, e.g. nobody if you followed up the example
+above.
+This means that users could gain access to this UID very easily.
+If you suspect you have malicious users, think twice before using
+efingerd without -u switch.
+And, NEVER EVER run efingerd as root. It is not necessary, and
+it could be dangerous (with -u switch, it equals to having root account
+with empty paswword)
+

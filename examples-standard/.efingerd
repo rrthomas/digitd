@@ -1,0 +1,44 @@
+#!/bin/sh
+
+# sample .efingerd file of user holik
+
+echo
+echo `date` from "$1@$2" >> /home/holik/.fingerlog # .fingerlog has to be 
+						  # writeable by daemon
+
+
+if [ "$1" = 'vanya' ]; then
+  echo 'Pistike, tunj el !'
+  exit 0
+fi
+
+if [ "$1@$2" = 'jakubikova@nic.fns.uniba.sk' ]; then
+  if [ "`/usr/bin/who | /bin/grep holik`" = "" ]; then
+    echo 'Nie som tu.'
+    echo 'Asi som prave na ceste k Tebe.'
+  else
+    echo 'Som tu...'
+    echo 'Prepac, stale Ta zanedbavam...'
+    echo 'Ale uz idem k Tebe - dufam ze sa nebudes prilis hnevat.'
+  fi
+fi
+
+
+if [ "$1" = '(null)' ]; then
+  echo Hello "$2",
+else 
+  echo Hello "$1@$2",
+fi
+
+
+if [ "`/usr/bin/who | /bin/grep holik`" = "" ]; then
+ echo 'Bad luck! I am not logged in!'
+else
+ echo "You are lucky! I am logged in just now (`/bin/date`)"
+
+# this line will tell the user he has just been fingered...
+# you should have xtell installed, obviously
+ xtell holik "You have been fingered from $1@$2"
+
+fi
+echo

@@ -1,0 +1,145 @@
+#
+#    Translators, if you are not familiar with the PO format, gettext
+#    documentation is worth reading, especially sections dedicated to
+#    this format, e.g. by running:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'
+#
+#    Some information specific to po-debconf are available at
+#            /usr/share/doc/po-debconf/README-trans
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+#    Developers do not need to manually edit POT or PO files.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: efingerd\n"
+"Report-Msgid-Bugs-To: garabik@kassiopeia.juls.savba.sk\n"
+"POT-Creation-Date: 2007-12-16 16:38+0100\n"
+"PO-Revision-Date: 2006-10-16 08:30+0000\n"
+"Last-Translator: Jens Seidel <jensseidel@users.sf.net>\n"
+"Language-Team: german <debian-l10n-german@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid "Permit users to have their own configurable finger replies?"
+msgstr "Möchten Sie Ihren Benutzern eigene finger-Antworten erlauben?"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid "You can decide if efingerd honours users' ~/.efingerd files."
+msgstr ""
+"Sie können entscheiden, ob efingerd von Benutzern angelegte ~/.efingerd-"
+"Dateien beachten soll."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"If someone from network fingers given user, and the user has ~/.efingerd "
+"file readable and executable for efingerd daemon, this file will be executed "
+"and its output will be sent to the fingerer."
+msgstr ""
+"Wenn jemand aus dem Netz einen Benutzer »fingerd« und der Benutzer eine "
+"eigene ~/.efingerd-Datei lesbar und ausführbar für den efingerd-Daemon "
+"erstellt hat, wird diese Datei ausgeführt und die Ausgaben an den "
+"»Fingernden« geschickt."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"This can be either desired or not, depending on your system policy. In "
+"particular, allowing .efingerd files allows users to cheat about their real "
+"identity. However, efingerd can be configured to display users' full names "
+"(from passwd) as the first line of the reply, so they cannot hide themselves "
+"completely."
+msgstr ""
+"Dies kann durchaus erwünscht sein, abhängig von Ihrer Systempolitik. Die ."
+"efingerd-Datei erlaubt dem Benutzer die wahre Identität zu verbergen. Es ist "
+"jedoch möglich, efingerd so zu konfigurieren, dass der volle Benutzername "
+"(aus der passwd) als Antwort zurück geschickt wird, damit können sich die "
+"Benutzer nicht vollständig hinter einer anderen Identität verstecken."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"There is however a slight security concern: if you allow .efingerd files, "
+"these files will be executed under efingerd UID, so malicious users gain "
+"access to all files owned by efingerd - this becomes important when you make "
+"efingerd to log into some files writable by the daemon, unless you take "
+"appropriate precautions."
+msgstr ""
+"Diese Methode hat jedoch kleine Sicherheitsbedenken: Wenn Sie die .efingerd-"
+"Dateien erlauben, dann werden diese Dateien unter der UID von efingerd "
+"ausgeführt, ein böswilliger Benutzer kann dadurch Zugriff auf alle Dateien "
+"erlangen, die efingerd gehören. Dies ist z.B. wichtig, wenn Sie den efingerd-"
+"Daemon in für den Daemon schreibbare Protokolldateien schreiben lassen, es "
+"sei denn, Sie treffen entsprechende Vorkehrungen."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"If you are the only user, or you trust your users, there is no reason to "
+"disable .efingerd files (and this is probably a reason you want to install "
+"efingerd for). However, if you expect your users to be nasty, you should "
+"better think about protecting from them - in particular, if you enable "
+"logging, make sure they cannot fiddle with the logfile - this is UP TO YOU."
+msgstr ""
+"Wenn Sie der einzige Benutzer des Systems sind oder Ihren Benutzern "
+"vertrauen, gibt es keinen Grund .efingerd-Dateien nicht zu erlauben (das ist "
+"wahrscheinlich der Grund für die Installation von efingerd). Wenn Sie jedoch "
+"annehmen müssen, dass sich Ihre Benutzer unanständig verhalten, sollten Sie "
+"über einen Schutz nachdenken - genauer, wenn Sie das Loggen aktivieren, "
+"stellen Sie sicher, dass die Benutzer nichts damit anstellen können - es "
+"hängt an IHNEN."
+
+#. Type: boolean
+#. Description
+#: ../templates:33
+msgid "Display users' real names?"
+msgstr "Die richtigen Namen der Benutzer anzeigen?"
+
+#. Type: boolean
+#. Description
+#: ../templates:33
+msgid ""
+"By default, efingerd displays users real names (from passwd) as the first "
+"line of finger reply. You may want to suppress it, but if you allow the use "
+"of .efingerd files at the same time, be aware that users can hide their "
+"identity for the fingerer."
+msgstr ""
+"Standardmäßig zeigt efingerd die echten Benutzernamen (entnommen aus der "
+"passwd) in der ersten Zeile der finger-Antwort an. Sie möchten dies "
+"vielleicht verhindern, aber wenn Sie zugleich .efingerd-Dateien erlauben, "
+"bedenken Sie bitte, dass dann ein Benutzer seine komplette Identität "
+"verstecken kann."
+
+#. Type: boolean
+#. Description
+#: ../templates:33
+msgid "If in doubt, select this option."
+msgstr "Im Zweifelsfall wählen Sie bitte diese Option."
+
+#~ msgid "Provided configuration files need to be adapted"
+#~ msgstr "Die ausgelieferten Konfigurationsdateien müssen angepasst werden"
+
+#~ msgid ""
+#~ "efingerd uses files in /etc/efingerd to decide about finger output "
+#~ "according to who is fingering whom. Those files, as installed by the "
+#~ "debian package, ARE JUST EXAMPLES! You should definitely write your own, "
+#~ "or at the very least, modify the installed files to reflect YOUR SPECIFIC "
+#~ "settings."
+#~ msgstr ""
+#~ "efingerd benutzt Dateien in /etc/efingerd, um über die Ausgabe eines "
+#~ "finger zu entscheiden. Diese Dateien, welche vom Debian-Paket installiert "
+#~ "wurden, SIND NUR BEISPIELE! Sie sollten auf jeden Fall Ihre eigenen "
+#~ "schreiben oder wenigstens die installierten Dateien IHREN GEGEBENHEITEN "
+#~ "anpassen."

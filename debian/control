@@ -1,0 +1,16 @@
+Source: efingerd
+Section: net
+Priority: optional
+Maintainer: Radovan Garabík <garabik@kassiopeia.juls.savba.sk>
+Standards-Version: 3.7.3
+Build-Depends: libident-dev, debhelper (>= 4.1.16), po-debconf
+
+Package: efingerd
+Architecture: any
+Depends: ${shlibs:Depends}, debconf | debconf-2.0, netbase, adduser, update-inetd
+Conflicts: cfingerd, ffingerd, fingerd, xfingerd
+Suggests: finger
+Description: Another finger daemon for unix capable of fine-tuning your output.
+ efingerd is a finger daemon, which executes programs and displays their
+ output. This gives you complete control over what to display and to who, 
+ and an extreme configurability.

@@ -1,0 +1,14 @@
+#!/bin/sh -e
+
+action=$1
+version=$2
+
+# Source debconf library.
+. /usr/share/debconf/confmodule
+#db_version 2.0
+
+db_input low efingerd/allow_files || true
+db_input low efingerd/show_names || true
+db_go
+
+#exit 0

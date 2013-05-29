@@ -1,0 +1,18 @@
+#!/bin/sh
+
+. /etc/efingerd/log 
+
+echo
+if [ "$1" = "(null)" ]; then
+  echo -n Hello "$2",
+else 
+  echo -n Hello "$1@$2",
+fi
+
+if [ "$3" = "root" ]; then
+  echo root does not want to be fingered
+else
+  echo this is our dear user "$3":
+  /usr/bin/finger "$3"
+fi
+      
