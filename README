@@ -19,18 +19,11 @@ friendly administrator, you can take the advantage of it by making
 executable .efingerd in your home directory (it can be anything - from 
 single shell script to a program in super-hyper-extra-object oriented 
 language - only speed makes a difference). This program takes two 
-arguments, the first is the name of remote user fingering you (or (null) 
-if his/her/its system does not run ident), the second one is address of 
-his computer (or IP number, if efingerd is installed with option -n). 
+arguments, the first is the address of the remote computer
+(or IP number, if efingerd is installed with option -n), and the second
+is the name of your user.
 Standard output of this program is then displayed to the person fingering 
 you. Look at examples-standard/.efingerd for a nice example. 
-
-The program itself depends on libident (you can get it from 
-ftp://ftp.lysator.liu.se/pub/ident/libs). If you cannot install it, you 
-can still compile efingerd, just add -DDONT_HAVE_LIBIDENT to the gcc options
-(see Makefile). However, without ident you
-loose one of the strongest features of efingerd, i.e. deciding about the
-finger output depending on who is fingering.
 
 How to compile and install:
 
@@ -92,11 +85,9 @@ run, and replace nobody with this username (e.g. efingerd)
 
   These are normal programs, displaying on standard output desired 
   information. These programs are called with following parameters:
-  $1 - identity of remote user, (null) if his/her/its system is not running
-       ident
-  $2 - address of remote machine (IP number if it has not reverse DNS 
+  $1 - address of remote machine (IP number if it has not reverse DNS
        entry or you specified -n)
-  $3 - name of local user being fingered
+  $2 - name of local user being fingered
   
   The lines should end in CRLF (as for RFC), but in practise this does not 
   make much difference.

@@ -4,17 +4,7 @@
 . /etc/efingerd/log 
 echo
 
-if [ $1 = 'matos' ]; then
-  echo 'Go away.'
-  exit 0
-fi
-
-
-if [ $1 = '(null)' ]; then
-  echo Hello $2,
-else 
-  echo Hello $1\@$2,
-fi
+echo Hello $1,
 echo
 
 if [ $RANDOM -le 16000 ]; then

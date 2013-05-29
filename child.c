@@ -14,11 +14,6 @@
 
 
 #include "efingerd.h"
-#ifdef DONT_HAVE_LIBIDENT
-# define ident_id(a,b) NULL
-#else
-# include "ident.h"
-#endif
 
 #include <pwd.h>
 #include <sys/stat.h>
@@ -76,11 +71,11 @@ void alm(int i)
 }
 
 
-void safe_exec(char *cmd, char *arg1, char *arg2, char *arg3)
+void safe_exec(char *cmd, char *arg1, char *arg2)
 {
     int pid;
     if ((pid = fork()) == 0) {	/* Program inherits the socket */
-	execl(cmd, cmd, arg1, arg2, arg3, NULL);
+	execl(cmd, cmd, arg1, arg2, NULL);
 	_exit(0);		/* Should never happen */
     }
     signal(SIGALRM, alm);
@@ -88,8 +83,7 @@ void safe_exec(char *cmd, char *arg1, char *arg2, char *arg3)
     wait(NULL);
 }
 
-void do_finger(char *user, char *identity, char *remote_address,
-	       int sd_out)
+void do_finger(char *user, char *remote_address, int sd_out)
 {
 
     struct passwd *passs;
@@ -99,12 +93,12 @@ void do_finger(char *user, char *identity, char *remote_address,
     char *poi;
 
     if (strlen(user) == 0) {
-	safe_exec(EFINGER_LIST, identity, remote_address, NULL);
+	safe_exec(EFINGER_LIST, remote_address, NULL);
 
     } else {
 	passs = getpwnam(user);
 	if (passs == NULL) {
-	    safe_exec(EFINGER_NOUSER, identity, remote_address, user);
+	    safe_exec(EFINGER_NOUSER, remote_address, user);
 
 	} else {
 	    if (display_full_name) {
@@ -123,11 +117,10 @@ void do_finger(char *user, char *identity, char *remote_address,
                 strcat(path, "/");
 		strcat(path, EFINGER_USER_FILE);
 		if (ignore_user || stat(path, &st)) {
-		    safe_exec(EFINGER_LUSER, identity, remote_address,
-			      user);
+		    safe_exec(EFINGER_LUSER, remote_address, user);
 
 		} else {
-		    safe_exec(path, identity, remote_address, user);
+		    safe_exec(path, remote_address, user);
 		}
 	    }
 	}
@@ -147,8 +140,7 @@ void inetd_service(int sd_in, int sd_out)
     char buffer[MAX_SOCK_LENGTH];
     int sinsize = sizeof(struct sockaddr_in);
     int reqstat;
-    char *identity, *remote_address;
-    char *nullident = "(null)";
+    char *remote_address;
 
     s_in = sd_in;
     s_out = sd_out;
@@ -168,11 +160,7 @@ void inetd_service(int sd_in, int sd_out)
     laddr = sin.sin_addr;
 
     reqstat = get_request(sd_in, buffer, MAX_SOCK_LENGTH);
-    if (use_ident)
-	identity = ident_id(sd_in, IDENT_TIME);
-    if (identity == NULL)
-	identity = nullident;
     remote_address = lookup_addr(raddr);
-    do_finger(buffer, identity, remote_address, sd_out);
+    do_finger(buffer, remote_address, sd_out);
 
 }

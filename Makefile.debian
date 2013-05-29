@@ -5,8 +5,6 @@ MANDIR=$(DESTDIR)/usr/man/man8
 CC = gcc 
 CFLAGS = -O2 -Wall  
 
-LIBS = -lident
-
 all: efingerd
 
 efingerd: efingerd.o child.o

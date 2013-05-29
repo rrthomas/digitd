@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 XSBC-Original-Maintainer: Radovan Garabík <garabik@kassiopeia.juls.savba.sk>
 Standards-Version: 3.7.3
-Build-Depends: libident-dev, debhelper (>= 4.1.16), po-debconf
+Build-Depends: debhelper (>= 4.1.16), po-debconf
 
 Package: efingerd
 Architecture: any

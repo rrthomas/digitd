@@ -20,7 +20,7 @@ EOM
 else
   cat <<EOM
 
- Yes, $3 does exist.
+ Yes, $2 does exist.
 
 EOM
 

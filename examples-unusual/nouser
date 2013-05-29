@@ -3,71 +3,67 @@
 . /etc/efingerd/log 
 
 echo
-if [ "$1" = "(null)" ]; then
-  echo Hello "$2",
-else 
-  echo Hello "$1@$2",
-fi
+echo Hello "$1",
 
-if [ "$3" = "/W" ]; then
+if [ "$2" = "/W" ]; then
   /usr/bin/finger
   exit 0
 fi
 
 
-if [ "$3" = "time" ]; then
+if [ "$2" = "time" ]; then
   echo The time is...
   date
   exit 0
 fi
 
-if [ "$3" = "ping" ]; then
+if [ "$2" = "ping" ]; then
   echo 'PONG!'
-  ping -c 5 "$2"
+  ping -c 5 "$1"
   exit 0
 fi
 
-if [ "$3" = "traceroute" ]; then
-  /usr/sbin/traceroute -n -q 2 "$2"
+if [ "$2" = "traceroute" ]; then
+  /usr/sbin/traceroute -n -q 2 "$1"
   exit 0
 fi
 
-if [ $3 = 'fortune' ]; then
+if [ $2 = 'fortune' ]; then
   /usr/games/fortune
   exit 0
 fi
 
-if [ $3 = 'users' ]; then
+if [ $2 = 'users' ]; then
   /usr/bin/finger | grep -v garabik
   exit 0
 fi
 
-if [ $3 = 'who' ]; then
+if [ $2 = 'who' ]; then
   who -iwH | grep -v garabik
   exit 0
 fi
 
-if [ $3 = 'date' ]; then
+if [ $2 = 'date' ]; then
   date
   exit 0
 fi
 
-if [ $3 = 'w' ]; then
+if [ $2 = 'w' ]; then
   w | grep -v garabik
   exit 0
 fi
 
-if [ $3 = 'cal' ]; then
+if [ $2 = 'cal' ]; then
   cal
   exit 0
 fi
 
-if [ $3 = 'calendar' ]; then
+if [ $2 = 'calendar' ]; then
   calendar
   exit 0
 fi
 
-if [ $3 = 'help' ]; then
+if [ $2 = 'help' ]; then
 cat <<EOM
 
 Help me if you can,
