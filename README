@@ -23,7 +23,7 @@ arguments, the first is the address of the remote computer
 (or IP number, if efingerd is installed with option -n), and the second
 is the name of your user.
 Standard output of this program is then displayed to the person fingering 
-you. Look at examples-standard/.efingerd for a nice example. 
+you. Look at examples/.efingerd for a nice example.
 
 How to compile and install:
 

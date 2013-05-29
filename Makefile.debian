@@ -22,4 +22,4 @@ clean:
 install: efingerd 
 	cp efingerd $(BINDIR)
 	mkdir -p $(DESTDIR)/etc/efingerd
-	cp examples-standard/* $(DESTDIR)/etc/efingerd
+	cp examples/* $(DESTDIR)/etc/efingerd
