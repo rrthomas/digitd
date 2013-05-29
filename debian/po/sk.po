@@ -1,0 +1,122 @@
+# Slovak translations for efingerd package
+# Slovenské preklady pre balík efingerd.
+# Copyright (C) 2012 THE efingerd'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the efingerd package.
+# Automatically generated, 2012.
+# Slavko <linux@slavino.sk>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: efingerd 1.6.2.7\n"
+"Report-Msgid-Bugs-To: efingerd@packages.debian.org\n"
+"POT-Creation-Date: 2010-01-01 21:30+0100\n"
+"PO-Revision-Date: 2012-08-20 13:21+0200\n"
+"Last-Translator: Slavko <linux@slavino.sk>\n"
+"Language-Team: slovenčina <debian-l10n-slovak@lists.debian.org>\n"
+"Language: sk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-POFile-SpellExtra: passwd efingerd finger UID\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:1001
+msgid "Permit users to have their own configurable finger replies?"
+msgstr ""
+"Povoliť používateľom používať ich vlastné nastaviteľné odpovede finger?"
+
+#. Type: boolean
+#. Description
+#: ../templates:1001
+msgid "You can decide if efingerd honours users' ~/.efingerd files."
+msgstr ""
+"Môžete rozhodnúť, či bude efingerd používať používateľské súbory ~/.efingerd."
+
+#. Type: boolean
+#. Description
+#: ../templates:1001
+msgid ""
+"If someone from network fingers given user, and the user has ~/.efingerd "
+"file readable and executable for efingerd daemon, this file will be executed "
+"and its output will be sent to the fingerer."
+msgstr ""
+"Ak niekto zo siete zisťuje daného používateľa, a tento používateľ má súbor "
+"~/.efingerd čitateľný a spustiteľný démonom efingerd, tento súbor bude "
+"spustený a jeho výstup bude odoslaný hľadajúcemu."
+
+#. Type: boolean
+#. Description
+#: ../templates:1001
+msgid ""
+"This can be either desired or not, depending on your system policy. In "
+"particular, allowing .efingerd files allows users to cheat about their real "
+"identity. However, efingerd can be configured to display users' full names "
+"(from passwd) as the first line of the reply, so they cannot hide themselves "
+"completely."
+msgstr ""
+"Toto môže, ale nemusí byť žiadané, v závislosti na systémovej politike. Vo "
+"všeobecnosti, povolenie súborov .efingerd poskytuje používateľom možnosť "
+"klamať o svojej reálnej identite. Avšak, efingerd môže byť nastavený tak, "
+"aby zobrazoval úplné mená používateľov (z passwd) ako prvý riadok odpovede, "
+"takže sa používatelia nedokážu úplne skryť."
+
+#. Type: boolean
+#. Description
+#: ../templates:1001
+msgid ""
+"There is however a slight security concern: if you allow .efingerd files, "
+"these files will be executed under efingerd UID, so malicious users gain "
+"access to all files owned by efingerd - this becomes important when you make "
+"efingerd to log into some files writable by the daemon, unless you take "
+"appropriate precautions."
+msgstr ""
+"Existuje však aj malý bezpečnostný problém: ak povolíte súbory .efingerd, "
+"tieto súbory môžu byť spúšťané s právami UID efingerd, takže škodliví "
+"používatelia môžu získať prístup k všetkým súborom vlastneným efingerd – "
+"toto sa môže stať dôležité, keď nastavíte efingerd na zaznamenávanie do "
+"nejakých súborov, zapisovateľných pre tohoto démona, pokiaľ neurobíte "
+"predbežné opatrenia."
+
+#. Type: boolean
+#. Description
+#: ../templates:1001
+msgid ""
+"If you are the only user, or you trust your users, there is no reason to "
+"disable .efingerd files (and this is probably a reason you want to install "
+"efingerd for). However, if you expect your users to be nasty, you should "
+"better think about protecting from them - in particular, if you enable "
+"logging, make sure they cannot fiddle with the logfile - this is UP TO YOU."
+msgstr ""
+"Ak ste len používateľ, alebo dôverujte svojim používateľom, neexistuje dôvod "
+"na zakázanie súborov .efingerd (a je to pravdepodobne aj dôvod, kvôli "
+"ktorému inštalujete efingerd). Ale ak očakávate, že vaši používatelia budú "
+"zlí, mali by ste sa viac zamyslieť nad ochranou pred nimi – vo všeobecnosti, "
+"ak povolíte zaznamenávanie, zaistite aby nemohli manipulovať so súborom "
+"záznamu *. toto je len na vás."
+
+#. Type: boolean
+#. Description
+#: ../templates:2001
+msgid "Display users' real names?"
+msgstr "Zobraziť skutočné mená používateľov?"
+
+#. Type: boolean
+#. Description
+#: ../templates:2001
+msgid ""
+"By default, efingerd displays users real names (from passwd) as the first "
+"line of finger reply. You may want to suppress it, but if you allow the use "
+"of .efingerd files at the same time, be aware that users can hide their "
+"identity for the fingerer."
+msgstr ""
+"Predvolene, efingerd zobrazuje reálne používateľské mená (z passwd) ako prvý "
+"riadok odpovede finger. Môžete to vypnúť, ale ak zároveň povolíte použitie "
+"súborov .efingerd, pamätajte, že používatelia môžu skryť svoju identitu."
+
+#. Type: boolean
+#. Description
+#: ../templates:2001
+msgid "If in doubt, select this option."
+msgstr "Ak neviete čo to znamená, vyberte túto možnosť."

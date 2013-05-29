@@ -5,12 +5,12 @@ MANDIR=$(DESTDIR)/usr/man/man8
 CC = gcc 
 CFLAGS = -O2 -Wall  
 
-LDFLAGS = -lident
+LIBS = -lident
 
 all: efingerd
 
 efingerd: efingerd.o child.o
-	$(CC) $(CFLAGS) $(LDFLAGS) efingerd.o child.o -o efingerd
+	$(CC) $(CFLAGS) $(LDFLAGS) efingerd.o child.o -o efingerd $(LIBS)
 
 efingerd.o: efingerd.c
 	$(CC) $(CFLAGS) -c efingerd.c

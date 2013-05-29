@@ -7,17 +7,18 @@
 # /usr/share/doc/po-debconf/README-trans
 # or http://www.debian.org/intl/l10n/po-debconf/README-trans
 # Developers do not need to manually edit POT or PO files.
-# 
-# 
+#
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: efingerd\n"
-"Report-Msgid-Bugs-To: garabik@kassiopeia.juls.savba.sk\n"
-"POT-Creation-Date: 2007-12-16 16:38+0100\n"
+"Report-Msgid-Bugs-To: efingerd@packages.debian.org\n"
+"POT-Creation-Date: 2010-01-01 21:30+0100\n"
 "PO-Revision-Date: 2005-03-29 01:02-0300\n"
 "Last-Translator: Felipe Augusto van de Wiel (faw) <felipe@cathedrallabs."
 "org>\n"
 "Language-Team: Portuguese/Brazil <debian-l10n-portuguese>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,21 +26,21 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:4
+#: ../templates:1001
 msgid "Permit users to have their own configurable finger replies?"
 msgstr ""
 "Permitir que os usuários tenham suas próprias respostas finger configuráveis?"
 
 #. Type: boolean
 #. Description
-#: ../templates:4
+#: ../templates:1001
 msgid "You can decide if efingerd honours users' ~/.efingerd files."
 msgstr ""
 "Você pode decidir se o efingerd honra os arquivos ~/.efingerd dos usuários."
 
 #. Type: boolean
 #. Description
-#: ../templates:4
+#: ../templates:1001
 msgid ""
 "If someone from network fingers given user, and the user has ~/.efingerd "
 "file readable and executable for efingerd daemon, this file will be executed "
@@ -52,7 +53,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:4
+#: ../templates:1001
 msgid ""
 "This can be either desired or not, depending on your system policy. In "
 "particular, allowing .efingerd files allows users to cheat about their real "
@@ -68,7 +69,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:4
+#: ../templates:1001
 msgid ""
 "There is however a slight security concern: if you allow .efingerd files, "
 "these files will be executed under efingerd UID, so malicious users gain "
@@ -85,7 +86,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:4
+#: ../templates:1001
 msgid ""
 "If you are the only user, or you trust your users, there is no reason to "
 "disable .efingerd files (and this is probably a reason you want to install "
@@ -102,13 +103,13 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:33
+#: ../templates:2001
 msgid "Display users' real names?"
 msgstr "Exibir o nome real dos usuários?"
 
 #. Type: boolean
 #. Description
-#: ../templates:33
+#: ../templates:2001
 msgid ""
 "By default, efingerd displays users real names (from passwd) as the first "
 "line of finger reply. You may want to suppress it, but if you allow the use "
@@ -123,7 +124,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:33
+#: ../templates:2001
 msgid "If in doubt, select this option."
 msgstr "Em caso de dúvida, selecione essa opção."
 

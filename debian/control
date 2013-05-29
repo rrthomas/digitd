@@ -1,7 +1,8 @@
 Source: efingerd
 Section: net
 Priority: optional
-Maintainer: Radovan Garabík <garabik@kassiopeia.juls.savba.sk>
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+XSBC-Original-Maintainer: Radovan Garabík <garabik@kassiopeia.juls.savba.sk>
 Standards-Version: 3.7.3
 Build-Depends: libident-dev, debhelper (>= 4.1.16), po-debconf
 

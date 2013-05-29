@@ -1,3 +1,35 @@
+efingerd (1.6.2.7+nmu1ubuntu1) raring; urgency=low
+
+  * Merge from Debian unstable. Remaining changes:
+    - Makefile.debian: Use LIBS instead of LDFLAGS for libraries, and added
+      LIBS to the compiler.  Fixes FTBFS with --as-needed.
+
+ -- Logan Rosen <logatronico@gmail.com>  Wed, 24 Oct 2012 15:07:40 -0400
+
+efingerd (1.6.2.7+nmu1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Debconf templates translations:
+    - Add Danish, Joe Hansen (closes: #658342)
+    - Add Slovak, Slavko (closes: #685381)
+    - Add Polish, Michał Kułach (closes: #685945)
+    - Add Italian, Beatrice Torracca (closes: #686002)
+
+ -- David Prévot <taffit@debian.org>  Mon, 27 Aug 2012 11:09:38 -0400
+
+efingerd (1.6.2.7ubuntu1) oneiric; urgency=low
+
+  * Makefile.debian: Use LIBS instead of LDFLAGS for libraries, and added LIBS
+    to the compiler.  Fixes FTBFS with --as-needed. (LP: #770943)
+
+ -- Dave Walker (Daviey) <DaveWalker@ubuntu.com>  Sat, 17 Sep 2011 09:59:48 +0100
+
+efingerd (1.6.2.7) unstable; urgency=low
+
+  * added Russian debconf templates translation (closes: #558279)
+
+ -- Radovan Garabík <garabik@kassiopeia.juls.savba.sk>  Fri, 01 Jan 2010 21:29:01 +0100
+
 efingerd (1.6.2.6) unstable; urgency=low
 
   * added Dutch debconf templates translation (closes: #451394)
@@ -179,6 +211,3 @@ efingerd (0.7) unstable; urgency=low
  -- Radovan Garabik <garabik@fmph.uniba.sk>  Sun,  28 Feb 1999 20:08:15 +0100
  
 
-Local variables:
-mode: debian-changelog
-End:

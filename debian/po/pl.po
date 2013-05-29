@@ -1,0 +1,122 @@
+# Translation of efingerd debconf templates to Polish.
+# Copyright (C) 2010
+# This file is distributed under the same license as the efingerd package.
+#
+# Michał Kułach <michal.kulach@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: efingerd@packages.debian.org\n"
+"POT-Creation-Date: 2010-01-01 21:30+0100\n"
+"PO-Revision-Date: 2012-08-26 16:33+0200\n"
+"Last-Translator: Michał Kułach <michal.kulach@gmail.com>\n"
+"Language-Team: Polish <debian-l10n-polish@lists.debian.org>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.4\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:1001
+msgid "Permit users to have their own configurable finger replies?"
+msgstr ""
+"Pozwolić użytkownikom na posiadanie własnych, konfigurowalnych odpowiedzi "
+"finger?"
+
+#. Type: boolean
+#. Description
+#: ../templates:1001
+msgid "You can decide if efingerd honours users' ~/.efingerd files."
+msgstr ""
+"Można zadecydować, czy efingerd ma honorować pliki użytkowników ~/.efingerd."
+
+#. Type: boolean
+#. Description
+#: ../templates:1001
+msgid ""
+"If someone from network fingers given user, and the user has ~/.efingerd "
+"file readable and executable for efingerd daemon, this file will be executed "
+"and its output will be sent to the fingerer."
+msgstr ""
+"Jeśli ktoś z sieci wykona finger na użytkowniku, a posiada on plik ~/."
+"efingerd będący odczytywalny i wykonywalny dla demona efingerd, to plik ten "
+"zostanie wykonany, a jego wyjście zostanie wysłane do żądającego finger."
+
+#. Type: boolean
+#. Description
+#: ../templates:1001
+msgid ""
+"This can be either desired or not, depending on your system policy. In "
+"particular, allowing .efingerd files allows users to cheat about their real "
+"identity. However, efingerd can be configured to display users' full names "
+"(from passwd) as the first line of the reply, so they cannot hide themselves "
+"completely."
+msgstr ""
+"Może być to pożądane lub nie - zależnie od zasad systemowych. W "
+"szczególności, zezwolenie na pliki .efingerd pozwala użytkownikom fałszować "
+"swą rzeczywistą tożsamość. Jednak efingerd może zostać tak skonfigurowany, "
+"aby wyświetlał imię i nazwisko (z passwd) jako pierwszy wiersz odpowiedzi, "
+"dzięki czemu nie będą mogli się oni całkowicie ukryć."
+
+#. Type: boolean
+#. Description
+#: ../templates:1001
+msgid ""
+"There is however a slight security concern: if you allow .efingerd files, "
+"these files will be executed under efingerd UID, so malicious users gain "
+"access to all files owned by efingerd - this becomes important when you make "
+"efingerd to log into some files writable by the daemon, unless you take "
+"appropriate precautions."
+msgstr ""
+"Występuje tu też pewne ryzyko związane z bezpieczeństwem - jeśli zezwoli się "
+"na pliki .efingerd, to będą one wykonane z UID efingerd, co pozwoli "
+"złośliwym użytkownikom na uzyskanie dostępu do wszystkich plików będących "
+"własnością efingerd - staje się to istotne, jeśli efingerd ma zapisywać logi "
+"do plików zapisywalnych dla demona, chyba że przedsiębierze się pewne środki."
+
+#. Type: boolean
+#. Description
+#: ../templates:1001
+msgid ""
+"If you are the only user, or you trust your users, there is no reason to "
+"disable .efingerd files (and this is probably a reason you want to install "
+"efingerd for). However, if you expect your users to be nasty, you should "
+"better think about protecting from them - in particular, if you enable "
+"logging, make sure they cannot fiddle with the logfile - this is UP TO YOU."
+msgstr ""
+"Jeśli jest się jedynym użytkownikiem lub ufa się pozostałym, to nie ma "
+"powodu aby wyłączać pliki .efingerd (i jest to prawdopodobnie powód dla "
+"którego efingerd jest instalowany). W przeciwnym wypadku należy pomyśleć o "
+"odpowiednim zabezpieczeniu się - w szczególności, jeśli włączy się "
+"zapisywanie dziennika, proszę upewnić się, że pozostałe osoby nie będą mogły "
+"go podmienić - jednak jest to zadanie administratora."
+
+#. Type: boolean
+#. Description
+#: ../templates:2001
+msgid "Display users' real names?"
+msgstr "Wyświetlać prawdziwe dane użytkowników?"
+
+#. Type: boolean
+#. Description
+#: ../templates:2001
+msgid ""
+"By default, efingerd displays users real names (from passwd) as the first "
+"line of finger reply. You may want to suppress it, but if you allow the use "
+"of .efingerd files at the same time, be aware that users can hide their "
+"identity for the fingerer."
+msgstr ""
+"Domyślnie, efingerd wyświetla prawdziwe imiona i nazwiska (z passwd) w "
+"pierwszym wierszu odpowiedzi finger. Można wyłączyć tę opcję, lecz jeśli "
+"pozwoli się równocześnie używać użytkownikom pliki .efingerd, to proszę "
+"pamiętać, że będą oni mogli ukryć swą tożsamość."
+
+#. Type: boolean
+#. Description
+#: ../templates:2001
+msgid "If in doubt, select this option."
+msgstr "W przypadku wątpliwości, proszę wybrać \"tak\"."

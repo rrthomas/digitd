@@ -14,18 +14,19 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: efingerd\n"
-"Report-Msgid-Bugs-To: garabik@kassiopeia.juls.savba.sk\n"
-"POT-Creation-Date: 2007-12-16 16:38+0100\n"
+"Report-Msgid-Bugs-To: efingerd@packages.debian.org\n"
+"POT-Creation-Date: 2010-01-01 21:30+0100\n"
 "PO-Revision-Date: 2005-08-29 17:28+0200\n"
 "Last-Translator: Tomas Stanys <tomas_stanys@tempest.sk>\n"
 "Language-Team: Lituanian\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #. Type: boolean
 #. Description
-#: ../templates:4
+#: ../templates:1001
 #, fuzzy
 msgid "Permit users to have their own configurable finger replies?"
 msgstr ""
@@ -34,7 +35,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:4
+#: ../templates:1001
 #, fuzzy
 msgid "You can decide if efingerd honours users' ~/.efingerd files."
 msgstr ""
@@ -43,7 +44,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:4
+#: ../templates:1001
 #, fuzzy
 msgid ""
 "If someone from network fingers given user, and the user has ~/.efingerd "
@@ -57,7 +58,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:4
+#: ../templates:1001
 #, fuzzy
 msgid ""
 "This can be either desired or not, depending on your system policy. In "
@@ -82,7 +83,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:4
+#: ../templates:1001
 msgid ""
 "There is however a slight security concern: if you allow .efingerd files, "
 "these files will be executed under efingerd UID, so malicious users gain "
@@ -93,7 +94,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:4
+#: ../templates:1001
 msgid ""
 "If you are the only user, or you trust your users, there is no reason to "
 "disable .efingerd files (and this is probably a reason you want to install "
@@ -104,14 +105,14 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:33
+#: ../templates:2001
 #, fuzzy
 msgid "Display users' real names?"
 msgstr "Norite, kad efingerd rodytų tikrus vardus?"
 
 #. Type: boolean
 #. Description
-#: ../templates:33
+#: ../templates:2001
 #, fuzzy
 msgid ""
 "By default, efingerd displays users real names (from passwd) as the first "
@@ -126,7 +127,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:33
+#: ../templates:2001
 msgid "If in doubt, select this option."
 msgstr ""
 
