@@ -132,7 +132,6 @@ void do_finger(char *user, char *identity, char *remote_address,
 	    }
 	}
     }
-    client_reply(sd_out, "\r\n");
 }
 
 /* ------------------------------------------------------------------
