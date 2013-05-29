@@ -1,0 +1,9 @@
+*.o
+/build-stamp
+/debian/efingerd
+/debian/efingerd.debhelper.log
+/debian/efingerd.postrm.debhelper
+/debian/efingerd.substvars
+/debian/files
+/efingerd
+/install-stamp
