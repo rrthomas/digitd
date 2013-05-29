@@ -168,7 +168,8 @@ void inetd_service(int sd_in, int sd_out)
     laddr = sin.sin_addr;
 
     reqstat = get_request(sd_in, buffer, MAX_SOCK_LENGTH);
-    identity = ident_id(sd_in, IDENT_TIME);
+    if (use_ident)
+	identity = ident_id(sd_in, IDENT_TIME);
     if (identity == NULL)
 	identity = nullident;
     remote_address = lookup_addr(raddr);
