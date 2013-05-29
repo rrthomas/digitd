@@ -39,35 +39,7 @@ if [ ! -f $LOGFILE ]; then
   chown efingerd:adm $LOGFILE
 fi
 
-RET=true
-test -e /usr/share/debconf/confmodule && {
-  . /usr/share/debconf/confmodule
-#  db_version 2.0
-  db_get efingerd/allow_files
-  }
-if [ "$RET" = "false" ]; then
-  EFSWITCH="-u"
-else
-  EFSWITCH=""
-fi
-
-RET=true
-test -e /usr/share/debconf/confmodule && {
-  db_get efingerd/show_names
-  }
-if [ "$RET" = "false" ]; then
-  RNSWITCH="-f"
-else
-  RNSWITCH=""
-fi
-  
-
 update-inetd --remove 'finger\t.*'
-update-inetd --group INFO --add "finger		stream	tcp	nowait	efingerd	/usr/sbin/tcpd	/usr/sbin/efingerd $RNSWITCH $EFSWITCH"
-
-#DEBHELPER#
-test -e /usr/share/debconf/confmodule && {
-  db_stop
-}
+update-inetd --group INFO --add "finger		stream	tcp	nowait	efingerd	/usr/sbin/tcpd	/usr/sbin/efingerd"
 
 exit 0

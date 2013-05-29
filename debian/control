@@ -3,12 +3,12 @@ Section: net
 Priority: optional
 Maintainer: Radovan Garabík <garabik@kassiopeia.juls.savba.sk>
 Standards-Version: 3.7.3
-Build-Depends: debhelper (>= 9), po-debconf
+Build-Depends: debhelper (>= 9)
 
 Package: efingerd
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, netbase, adduser, update-inetd
-Conflicts: cfingerd, ffingerd, fingerd, xfingerd
+Conflicts: cfingerd, fingerd, xfingerd
 Suggests: finger
 Description: Another finger daemon for unix capable of fine-tuning your output.
  efingerd is a finger daemon, which executes programs and displays their

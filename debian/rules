@@ -21,7 +21,6 @@ clean:
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp install-stamp
-	debconf-updatepo
 
 	# Add here commands to clean up after the build process.
 	$(MAKE) -f Makefile.debian clean
@@ -49,7 +48,7 @@ binary-arch: build install
 #	dh_testversion
 	dh_testdir
 	dh_testroot
-	dh_installdebconf
+#	dh_installdebconf
 	dh_installdocs
 	dh_installexamples
 #	dh_installmenu
