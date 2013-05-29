@@ -101,16 +101,6 @@ void do_finger(char *user, char *remote_address, int sd_out)
 	    safe_exec(EFINGER_NOUSER, remote_address, user);
 
 	} else {
-	    if (display_full_name) {
-		strncpy(buff, passs->pw_gecos, sizeof(buff) - 1);
-		buff[sizeof(buff) - 1] = '\0';
-		for (poi = buff; (*poi) != '\0'; poi++)
-		    if ((*poi) == ',')
-			(*poi) = ' ';
-
-		client_reply(sd_out, buff);
-		client_reply(sd_out, "\r\n");
-	    };
 	    if (sizeof(path) >=
 		strlen(passs->pw_dir) + sizeof(EFINGER_USER_FILE) + 1) {
 		strncpy(path, passs->pw_dir, sizeof(path));

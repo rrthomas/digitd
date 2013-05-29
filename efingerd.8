@@ -3,7 +3,7 @@
 efingerd \- another finger daemon for linux
 .SH SYNOPSIS
 .B efingerd
-.I "[-t X] [-f] [-n] [-u] [--help] [--version]"
+.I "[-t X] [-n] [-u] [--help] [--version]"
 
 efingerd should be run from inetd.
 
@@ -26,9 +26,6 @@ ex: \-t 25  maintain connections for up to 25 seconds (default: -t 60)
 .TP
 .B \-n
 Do not lookup addresses, use IP numbers instead
-.TP
-.B \-f
-Do not display users' full names.
 .TP
 .B \-u
 Ignore user-specific .efingerd file

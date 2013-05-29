@@ -62,7 +62,6 @@ run, and replace nobody with this user name (e.g. efingerd)
    -t X       Lifetime for spawned services (in seconds)
 	      ex: -t 25  maintain connections for up to 25 seconds
    -n         Do not look up addresses, use IP numbers instead
-   -f         Do not display users' full names
    -u         Ignore user-specific .efingerd file   
 
 6) set up your own scripts providing the information about your machine in 

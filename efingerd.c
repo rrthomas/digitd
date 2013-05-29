@@ -85,7 +85,6 @@ static void	usage (char *progname)
 			"   -t X       Time to keep connection.\n"
 			"              ex: -t 25  maintain connections for up to 25 seconds.\n"
 			"   -n         Do not lookup addresses, use IP numbers instead.\n"
-			"   -f         Do not display users' full names.\n"
 			"   -u         Ignore user-specific .efingerd file\n",
 			progname);
 	exit (0);
@@ -111,7 +110,6 @@ int main (int argc, char *argv[])
 	u_short i;
 	
 	resolve_addr = 1;
-	display_full_name = 1;
 	ignore_user = 0;
 	
 	for (i = 1; i < argc; i++) {
@@ -121,10 +119,6 @@ int main (int argc, char *argv[])
 					client_timeout = atoi ( argv[++i]);
 					break;
 
-				case 'f':
-					display_full_name = 0;
-					break;
-                    
 				case 'v':
 					print_version ();
 					
