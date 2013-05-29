@@ -3,12 +3,12 @@ BINDIR=$(DESTDIR)/usr/sbin
 MANDIR=$(DESTDIR)/usr/man/man8	
 
 CC = gcc 
-CFLAGS = -O2 -Wall  
+CFLAGS = -O2 -Wall
 
 all: efingerd
 
 efingerd: efingerd.o child.o
-	$(CC) $(CFLAGS) $(LDFLAGS) efingerd.o child.o -o efingerd $(LIBS)
+	$(CC) $(CFLAGS) $(LDFLAGS) efingerd.o child.o -o efingerd
 
 efingerd.o: efingerd.c
 	$(CC) $(CFLAGS) -c efingerd.c

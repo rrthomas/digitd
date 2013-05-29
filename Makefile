@@ -1,16 +1,13 @@
-
 BINDIR=/usr/local/sbin
 MANDIR=/usr/local/man/man8
 
 CC = gcc 
 CFLAGS = -O2 -Wall
 
-
 all: efingerd
 
 efingerd: efingerd.o child.o
 	$(CC) $(CFLAGS) $(LDFLAGS) efingerd.o child.o -o efingerd
-	strip efingerd
 
 efingerd.o: efingerd.c
 	$(CC) $(CFLAGS) -c efingerd.c
