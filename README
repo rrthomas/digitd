@@ -12,7 +12,7 @@ It is based on my xtell program, which is in turn based on ident2 by Michael
 Bacarella.
 
 Requirements:
-linux, freebsd, maybe others
+Linux, FreeBSD, maybe others
 
 If you are just an ordinary user and efingerd is already installed by your 
 friendly administrator, you can take the advantage of it by making 
@@ -27,7 +27,7 @@ you. Look at examples-standard/.efingerd for a nice example.
 
 How to compile and install:
 
-If you have debian system with all neccessary packages installed, type 
+If you have Debian system with all necessary packages installed, type 
 dpkg-buildpackage (or dpkg-buildpackage -rfakeroot) in the package's 
 directory, then type 
 dpkg -i ../efingerd*deb
@@ -38,7 +38,7 @@ Else:
 
 2) type make
    This should produce the executable efingerd.
-   If it worked, ok, if not, there is an error somewhere :-)
+   If it worked, OK, if not, there is an error somewhere :-)
 
 3) become root
 
@@ -53,7 +53,7 @@ finger	stream	tcp	nowait	nobody	/usr/sbin/tcpd	/usr/sbin/in.fingerd
 finger	stream	tcp	nowait	nobody	/usr/sbin/tcpd	/usr/local/sbin/efingerd
 
 Alternatively, you can create your own user under which the daemon should 
-run, and replace nobody with this username (e.g. efingerd)
+run, and replace nobody with this user name (e.g. efingerd)
 
    Notice that the entries are separated by tabs, not spaces.
    efingerd recognizes following options:
@@ -61,7 +61,7 @@ run, and replace nobody with this username (e.g. efingerd)
    --version or -v Print version information and exit.
    -t X       Lifetime for spawned services (in seconds)
 	      ex: -t 25  maintain connections for up to 25 seconds
-   -n         Do not lookup addresses, use IP numbers instead
+   -n         Do not look up addresses, use IP numbers instead
    -f         Do not display users' full names
    -u         Ignore user-specific .efingerd file   
 
@@ -80,7 +80,7 @@ run, and replace nobody with this username (e.g. efingerd)
 
   If the local user has file .efingerd in his/her home directory, and it is 
   readable ( this is a BUG - should be executable :-) ) by the daemon, it 
-  will be executed and it's output will be served to the fingerer (unless
+  will be executed and its output will be served to the fingerer (unless
   forbidden by -u option)
 
   These are normal programs, displaying on standard output desired 
@@ -110,5 +110,4 @@ If you suspect you have malicious users, think twice before using
 efingerd without -u switch.
 And, NEVER EVER run efingerd as root. It is not necessary, and
 it could be dangerous (with -u switch, it equals to having root account
-with empty paswword)
-
+with empty password)
