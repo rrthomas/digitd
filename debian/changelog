@@ -1,11 +1,3 @@
-efingerd (1.6.2.7+nmu1ubuntu1) raring; urgency=low
-
-  * Merge from Debian unstable. Remaining changes:
-    - Makefile.debian: Use LIBS instead of LDFLAGS for libraries, and added
-      LIBS to the compiler.  Fixes FTBFS with --as-needed.
-
- -- Logan Rosen <logatronico@gmail.com>  Wed, 24 Oct 2012 15:07:40 -0400
-
 efingerd (1.6.2.7+nmu1) unstable; urgency=low
 
   * Non-maintainer upload.
