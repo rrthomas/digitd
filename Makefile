@@ -3,7 +3,7 @@ BINDIR=/usr/local/sbin
 MANDIR=/usr/local/man/man8
 
 CC = gcc 
-CFLAGS = -O2 -Wall -Wsurprising
+CFLAGS = -O2 -Wall
 
 
 all: efingerd

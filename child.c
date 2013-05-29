@@ -29,15 +29,14 @@ static int s_in = -1, s_out = -1;
 static char *lookup_addr(struct in_addr in)
 {
     static char addr[100];
-    struct hostent *he;
+    struct hostent *he = NULL;
 
     if (resolve_addr) {
 	he = gethostbyaddr((char *) &in, sizeof(struct in_addr), AF_INET);
-	if (he == NULL)
-	    strncpy(addr, inet_ntoa(in), sizeof(addr));
-	else
+	if (he != NULL)
 	    strncpy(addr, he->h_name, sizeof(addr));
-    } else
+    }
+    if (he == NULL)
 	strncpy(addr, inet_ntoa(in), sizeof(addr));
 
     addr[sizeof(addr)-1] = '\0';
@@ -65,7 +64,7 @@ void alm(int i)
     i++;
     signal(SIGINT, SIG_IGN);	/* Don't want to kill ourselves */
     kill(-getpgrp(), SIGINT);
-    sleep(TIME_UNTIL_KILL);	/* 3 second for the process to terminate itself */
+    sleep(TIME_UNTIL_KILL);	/* Wait for the process to terminate itself */
     kill(-getpgrp(), SIGKILL);
     exit(0);
 }
@@ -85,33 +84,25 @@ void safe_exec(char *cmd, char *arg1, char *arg2)
 
 void do_finger(char *user, char *remote_address, int sd_out)
 {
-
     struct passwd *passs;
     struct stat st;
+    char path[200];
 
-    char buff[200], path[200];
-    char *poi;
-
-    if (strlen(user) == 0) {
+    if (strlen(user) == 0)
 	safe_exec(EFINGER_LIST, remote_address, NULL);
-
-    } else {
+    else {
 	passs = getpwnam(user);
-	if (passs == NULL) {
+	if (passs == NULL)
 	    safe_exec(EFINGER_NOUSER, remote_address, user);
-
-	} else {
-	    if (sizeof(path) >=
-		strlen(passs->pw_dir) + sizeof(EFINGER_USER_FILE) + 1) {
+	else {
+	    if (sizeof(path) >= strlen(passs->pw_dir) + sizeof(EFINGER_USER_FILE) + 1) {
 		strncpy(path, passs->pw_dir, sizeof(path));
                 strcat(path, "/");
 		strcat(path, EFINGER_USER_FILE);
-		if (ignore_user || stat(path, &st)) {
+		if (ignore_user || stat(path, &st))
 		    safe_exec(EFINGER_LUSER, remote_address, user);
-
-		} else {
+		else
 		    safe_exec(path, remote_address, user);
-		}
 	    }
 	}
     }
@@ -125,11 +116,10 @@ void do_finger(char *user, char *remote_address, int sd_out)
  */
 void inetd_service(int sd_in, int sd_out)
 {
-    struct in_addr laddr, raddr;
+    struct in_addr raddr;
     struct sockaddr_in sin;
     char buffer[MAX_SOCK_LENGTH];
-    int sinsize = sizeof(struct sockaddr_in);
-    int reqstat;
+    socklen_t sinsize = sizeof(struct sockaddr_in);
     char *remote_address;
 
     s_in = sd_in;
@@ -147,10 +137,8 @@ void inetd_service(int sd_in, int sd_out)
 	client_reply(sd_out, "402 getsockname failed\r\n");
 	return;
     }
-    laddr = sin.sin_addr;
 
-    reqstat = get_request(sd_in, buffer, MAX_SOCK_LENGTH);
+    get_request(sd_in, buffer, MAX_SOCK_LENGTH);
     remote_address = lookup_addr(raddr);
     do_finger(buffer, remote_address, sd_out);
-
 }

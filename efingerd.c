@@ -11,7 +11,7 @@
  */
 #include "efingerd.h"
 
-	unsigned short client_timeout = 60;
+unsigned short client_timeout = 60;
 
 
 /* ------------------------------------------------------------------
@@ -40,13 +40,12 @@ int get_request (int d, char buffer[], u_short len)
 	for (i = 0; i < len; i++) {
 		if (read (d, &ch, 1) != 1)
 			return -1; 
-		else if (ch == '\n') { /* some buggy clients send only \n */
+		else if (ch == '\n') /* some buggy clients send only \n */
 			break;
-		     }
 		else if (ch == '\r') {
 			read (d, &ch, 1); /* should read the following \n */
 			break;
-		     }
+		}
 		else
 			buffer[i] = ch;
 	}
@@ -97,7 +96,7 @@ static void	usage (char *progname)
  *	wouldn't want to disappoint anyone.
  * ------------------------------------------------------------------
  */
-static void	print_version (void)
+static void print_version (void)
 {
 	fprintf (stderr, "efingerd %s\n", ID_VERSION );
 	exit (0);
@@ -146,8 +145,6 @@ int main (int argc, char *argv[])
 		}
 	}
 	
-		
-	
 	openlog ("efingerd", LOG_PID, LOG_DAEMON);
 	alarm (client_timeout);
 	signal (SIGALRM, killtic);
@@ -158,5 +155,4 @@ int main (int argc, char *argv[])
 	killsock (1);
 	closelog ();
 	exit (-1);
-
 }

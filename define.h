@@ -13,4 +13,3 @@
 /* how much time we give to users processes if they do not react to INT 
  * signal */
 #define TIME_UNTIL_KILL		3
-
