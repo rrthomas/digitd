@@ -83,8 +83,7 @@ static void	usage (char *progname)
 			"   --version  Print version information and exit.\n"
 			"   -t X       Time to keep connection.\n"
 			"              ex: -t 25  maintain connections for up to 25 seconds.\n"
-			"   -n         Do not lookup addresses, use IP numbers instead.\n"
-			"   -u         Ignore user-specific .efingerd file\n",
+			"   -n         Do not lookup addresses, use IP numbers instead.\n",
 			progname);
 	exit (0);
 }
@@ -109,7 +108,6 @@ int main (int argc, char *argv[])
 	u_short i;
 	
 	resolve_addr = 1;
-	ignore_user = 0;
 	
 	for (i = 1; i < argc; i++) {
 		if (argv[i][0] == '-') {
@@ -123,10 +121,6 @@ int main (int argc, char *argv[])
 					
 				case 'n':
 					resolve_addr = 0;
-					break;
-
-				case 'u':
-					ignore_user = 1;
 					break;
                 
 				case 'h':

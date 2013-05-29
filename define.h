@@ -4,7 +4,7 @@
 #define EFINGER_LUSER		"/etc/efingerd/luser"
 #define EFINGER_NOUSER		"/etc/efingerd/nouser"
 
-#define EFINGER_USER_FILE	".efingerd"
+#define EFINGER_USER_FILE	".finger"
 
 
 /* how much time we give to user processes */

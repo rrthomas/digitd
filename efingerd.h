@@ -41,7 +41,6 @@
  */
 /* SERVICE BEHAVIOR     */
 unsigned char   resolve_addr;		/* reverse lookup addresses	*/
-unsigned char   ignore_user;		/* ignore users' .efingerd file	*/
 unsigned short	client_timeout;		/* number of seconds till disconnect */
 /* ==================================================================
  * PROTOTYPES:

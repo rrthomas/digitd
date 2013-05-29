@@ -62,7 +62,6 @@ efingerd recognizes following options:
    -t X       Lifetime for spawned services (in seconds)
               ex: -t 25  maintain connections for up to 25 seconds
    -n         Do not look up addresses, use IP numbers instead
-   -u         Ignore user-specific .efingerd file
 
 6) set up your own scripts providing the information about your machine in
    /etc/efingerd/
@@ -72,15 +71,14 @@ efingerd recognizes following options:
           - what to display when somebody does finger @your.machine
    /etc/efingerd/luser
           - what to display when somebody fingers user on your machine, and
-            the fingered user does not have ~/.efingerd file
+            the fingered user has a ~/.finger file
    /etc/efingerd/nouser
           - what to display when somebody fingers non-existent user on
             your machine
 
-  If the local user has file ~/.efingerd, and it is readable ( this is
-  a BUG - should be executable :-) ) by the daemon, it will be
-  executed and its output will be served to the fingerer (unless
-  forbidden by -u option)
+  If the local user does not have has a file ~/.finger that can be
+  found by the daemon (i.e. the user's home directory is executable by
+  the daemon), then the daemon will act as if the user did not exist.
 
   These are normal programs, displaying on standard output desired
   information. These programs are called with following parameters:
@@ -95,16 +93,3 @@ efingerd recognizes following options:
   Don't forget that these programs must be executable by the daemon UID.
 
 7) restart inetd with killall -HUP inetd
-
-
-Security notes (PLEASE READ):
-unless run with option -u, efingerd executes file under user home
-directory named .efingerd. This file is executed under the same
-UID as the efingerd daemon, e.g. nobody if you followed up the example
-above.
-This means that users could gain access to this UID very easily.
-If you suspect you have malicious users, think twice before using
-efingerd without -u switch.
-And, NEVER EVER run efingerd as root. It is not necessary, and
-it could be dangerous (without -u switch, it equals to having root account
-with empty password)

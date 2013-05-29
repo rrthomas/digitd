@@ -99,10 +99,10 @@ void do_finger(char *user, char *remote_address, int sd_out)
 		strncpy(path, passs->pw_dir, sizeof(path));
                 strcat(path, "/");
 		strcat(path, EFINGER_USER_FILE);
-		if (ignore_user || stat(path, &st))
-		    safe_exec(EFINGER_LUSER, remote_address, user);
+		if (stat(path, &st))
+		    safe_exec(EFINGER_NOUSER, remote_address, user);
 		else
-		    safe_exec(path, remote_address, user);
+		    safe_exec(EFINGER_LUSER, remote_address, user);
 	    }
 	}
     }
