@@ -104,8 +104,6 @@ static void client_reply(int sd, char *outcome)
 }
 
 
-static int s_in = 0, s_out = 1;
-
 /* ----------------------------------------------------------------
  * killtic:
  *	kill this process after a pre-determined
@@ -114,8 +112,8 @@ static int s_in = 0, s_out = 1;
  */
 static void killtic(int s)
 {
-    killsock(s_in);
-    killsock(s_out);
+    killsock(STDIN_FILENO);
+    killsock(STDOUT_FILENO);
     exit(0);
 }
 
@@ -162,21 +160,21 @@ static void inetd_service(void)
     socklen_t sinsize = sizeof(struct sockaddr_in);
     char remote_host[NI_MAXHOST];
 
-    if (getpeername(s_in, (struct sockaddr *)&sin, &sinsize) == -1) {
+    if (getpeername(STDIN_FILENO, (struct sockaddr *)&sin, &sinsize) == -1) {
 	syslog(LOG_NOTICE, "error: getpeername: %s", strerror(errno));
-	client_reply(s_out, "getpeername failed\r\n");
+	client_reply(STDOUT_FILENO, "getpeername failed\r\n");
 	return;			/* the error implies the net is down, but try */
     }
     getnameinfo((struct sockaddr *)&sin, sinsize,
 		remote_host, sizeof(remote_host),
 		NULL, 0, 0);
 
-    if (getsockname(s_in, (struct sockaddr *)&sin, &sinsize) == -1) {
+    if (getsockname(STDIN_FILENO, (struct sockaddr *)&sin, &sinsize) == -1) {
 	syslog(LOG_ERR, "error: getsockname: %s", strerror(errno));
-	client_reply(s_out, "getsockname failed\r\n");
+	client_reply(STDOUT_FILENO, "getsockname failed\r\n");
 	return;
     }
-    get_request(s_in, buffer, MAX_SOCK_LENGTH);
+    get_request(STDIN_FILENO, buffer, MAX_SOCK_LENGTH);
     do_finger(buffer, remote_host);
 }
 
@@ -192,7 +190,7 @@ int main(int argc, char *argv[])
     alarm(client_timeout);
     signal(SIGALRM, killtic);
     inetd_service();
-    killsock(s_in);
-    killsock(s_out);
+    killsock(STDIN_FILENO);
+    killsock(STDOUT_FILENO);
     closelog();
 }
