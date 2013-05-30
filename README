@@ -35,11 +35,9 @@ Generic installation
 
 Requirements: Perl on a system supporting syslog (Linux, Mac OS X,…)
 
-1) Become root
+1) As root, type: make install
 
-2) Type: make install
-
-3) Add this line to /etc/inetd.conf
+2) Add this line to /etc/inetd.conf
 
 finger	stream	tcp	nowait	nobody	/usr/sbin/tcpd	/usr/local/sbin/digitd
 
@@ -49,4 +47,4 @@ entries are separated by tabs, not spaces.
 You can create a user under which the daemon should run (e.g. digitd),
 in which case its name should replace ‘nobody’ in the line above.
 
-4) Restart inetd with: killall -HUP inetd
+3) Restart inetd with: killall -HUP inetd
