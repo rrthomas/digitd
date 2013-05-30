@@ -50,7 +50,6 @@
  * ==================================================================
  */
 /* SERVICE BEHAVIOR     */
-unsigned char resolve_addr;		/* reverse lookup addresses	*/
 const unsigned short client_timeout = 60; /* number of seconds till disconnect */
 
 
@@ -115,8 +114,7 @@ static void usage(char *progname)
 	    "   --help     This information.\n"
 	    "   --version  Print version information and exit.\n"
 	    "   -t X       Time to keep connection.\n"
-	    "              ex: -t 25  maintain connections for up to 25 seconds.\n"
-	    "   -n         Do not lookup addresses, use IP numbers instead.\n",
+	    "              ex: -t 25  maintain connections for up to 25 seconds.\n",
 	    progname);
     exit(0);
 }
@@ -135,30 +133,6 @@ static void print_version(void)
 
 
 static int s_in = -1, s_out = -1;
-
-/* ------------------------------------------------------------------
- * lookup_addr:
- *      if resolve_addr, try to reverse resolve the address.
- *              else return the numerical ip.
- * ------------------------------------------------------------------
- */
-static char *lookup_addr(struct in_addr in)
-{
-    static char addr[100];
-    struct hostent *he = NULL;
-
-    if (resolve_addr) {
-	he = gethostbyaddr((char *) &in, sizeof(struct in_addr), AF_INET);
-	if (he != NULL)
-	    strncpy(addr, he->h_name, sizeof(addr));
-    }
-    if (he == NULL)
-	strncpy(addr, inet_ntoa(in), sizeof(addr));
-
-    addr[sizeof(addr)-1] = '\0';
-    return addr;
-}
-
 
 /* ----------------------------------------------------------------
  * killtic:
@@ -218,21 +192,19 @@ static void do_finger(char *user, char *remote_address, int sd_out)
  */
 static void inetd_service(int sd_in, int sd_out)
 {
-    struct in_addr raddr;
     struct sockaddr_in sin;
     char buffer[MAX_SOCK_LENGTH];
     socklen_t sinsize = sizeof(struct sockaddr_in);
-    char *remote_address;
+    char remote_address[100];
 
-    s_in = sd_in;
-    s_out = sd_out;
-
-    if (getpeername(sd_in, (struct sockaddr *) &sin, &sinsize) == -1) {
+    if (getpeername(s_in, (struct sockaddr *) &sin, &sinsize) == -1) {
 	syslog(LOG_NOTICE, "error: getpeername: %s", strerror(errno));
 	client_reply(sd_out, "401 getpeername failed\r\n");
 	return;			/* the error implies the net is down, but try */
     }
-    raddr = sin.sin_addr;
+    getnameinfo((struct sockaddr *)&sin, sinsize,
+		remote_address, sizeof(remote_address),
+		NULL, 0, 0);
 
     if (getsockname(sd_in, (struct sockaddr *) &sin, &sinsize) == -1) {
 	syslog(LOG_ERR, "error: getsockname: %s", strerror(errno));
@@ -240,9 +212,8 @@ static void inetd_service(int sd_in, int sd_out)
 	return;
     }
 
-    get_request(sd_in, buffer, MAX_SOCK_LENGTH);
-    remote_address = lookup_addr(raddr);
-    do_finger(buffer, remote_address, sd_out);
+    get_request(s_in, buffer, MAX_SOCK_LENGTH);
+    do_finger(buffer, remote_address, s_out);
 }
 
 
@@ -250,17 +221,11 @@ int main(int argc, char *argv[])
 {
     u_short i;
 
-    resolve_addr = 1;
-
     for (i = 1; i < argc; i++) {
 	if (argv[i][0] == '-') {
 	    switch (argv[i][1]) {
 	    case 'v':
 		print_version();
-		break;
-
-	    case 'n':
-		resolve_addr = 0;
 		break;
 
 	    case 'h':

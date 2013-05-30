@@ -17,11 +17,10 @@ Requirements: A POSIX system (Linux, Mac OS X, ...)
 If you are just an ordinary user and efingerd is already installed by
 your friendly administrator, you can take the advantage of it by
 making executable .efingerd in your home directory. This program takes
-two arguments, the first is the address of the remote computer (or IP
-number, if efingerd is installed with option -n), and the second is
-the name of your user. Standard output of this program is then
-displayed to the person fingering you. Look at examples/.efingerd for
-a nice example.
+two arguments, the first is the host name (or IP address if not
+available) of the remote computer, and the second is the name of your
+user. Standard output of this program is then displayed to the person
+fingering you. Look at examples/.efingerd for a nice example.
 
 
 Installation
@@ -59,7 +58,6 @@ efingerd recognizes following options:
 
    --help  short help
    --version or -v Print version information and exit.
-   -n         Do not look up addresses, use IP numbers instead
 
 6) set up your own scripts providing the information about your machine in
    /etc/efingerd/
@@ -81,7 +79,7 @@ efingerd recognizes following options:
   These are normal programs, displaying on standard output desired
   information. These programs are called with following parameters:
   $1 - address of remote machine (IP number if it has not reverse DNS
-       entry or you specified -n)
+       entry)
   $2 - name of local user being fingered
 
   The lines should end in CRLF (as for RFC), but in practise this does not

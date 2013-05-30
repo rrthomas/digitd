@@ -3,7 +3,7 @@
 efingerd \- another finger daemon for linux
 .SH SYNOPSIS
 .B efingerd
-.I "[-n] [--help] [--version]"
+.I "[--help] [--version]"
 
 efingerd should be run from inetd.
 
@@ -19,9 +19,6 @@ Show summary of options and exit.
 .TP
 .B \-\-version
 Show version and exit.
-.TP
-.B \-n
-Do not lookup addresses, use IP numbers instead
 .SH USAGE
 The following executables provide information to the fingerer:
    
@@ -37,7 +34,7 @@ The following executables provide information to the fingerer:
 These are normal programs, displaying on standard output desired 
 information. These programs are called with following parameters:
   $1 - address of remote machine (IP number if it has not reverse DNS 
-entry or you specified -n)
+entry)
   $2 - name of local user being fingered
 
 Look at examples/ for examples.
