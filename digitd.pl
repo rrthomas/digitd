@@ -6,7 +6,7 @@
 use strict;
 use warnings;
 
-my $VERSION = "2.0";
+my $VERSION = "1.0";
 my $PROGRAM = "digitd";
 
 my $SCRIPT_LIST = "/etc/$PROGRAM/list";
