@@ -12,7 +12,7 @@ what are you going to send to somebody fingering your computer.
 It is based on my xtell program, which is in turn based on ident2 by
 Michael Bacarella.
 
-Requirements: A POSIX system (Linux, Mac OS X, ...)
+Requirements: Perl on a system supporting syslog (Linux, Mac OS X, ...)
 
 By default, finger will report that a user does not exist. To allow
 yourself to be fingered, create the file .finger in your home
@@ -30,14 +30,11 @@ Else:
 
 1) look at Makefile
 
-2) type: make
-   This should produce the executable efingerd.
+2) become root
 
-3) become root
+3) type: make install
 
-4) type: make install
-
-5) replace this line in /etc/inetd.conf
+4) replace this line in /etc/inetd.conf
 
 finger	stream	tcp	nowait	nobody	/usr/sbin/tcpd	/usr/sbin/in.fingerd
 
@@ -50,7 +47,7 @@ run, and replace nobody with this user name (e.g. efingerd)
 
 Notice that the entries are separated by tabs, not spaces.
 
-6) set up your own scripts providing the information about your machine in
+5) set up your own scripts providing the information about your machine in
    /etc/efingerd/
    You need these scripts:
 
@@ -77,4 +74,4 @@ Notice that the entries are separated by tabs, not spaces.
   Look at examples*/ for examples.
   Don't forget that these programs must be executable by the daemon UID.
 
-7) restart inetd with killall -HUP inetd
+6) restart inetd with killall -HUP inetd

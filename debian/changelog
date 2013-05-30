@@ -1,3 +1,9 @@
+efingerd (2.0) unstable; urgency=low
+
+  * Rewrite and simplify.
+
+ -- Reuben Thomas <rrt@sc3d.org>  Thu, 30 May 2013 13:13:13 +0100
+
 efingerd (1.6.2.7+nmu1) unstable; urgency=low
 
   * Non-maintainer upload.

@@ -1,15 +1,13 @@
-BINDIR=/usr/local/sbin
-MANDIR=/usr/local/man/man8
+PREFIX=/usr/local
+BINDIR=$(DESTDIR)$(PREFIX)/sbin
+MANDIR=$(DESTDIR)$(PREFIX)/man/man8
 
-all: efingerd
+all:
 
-clean:
-	rm -f *~ *.o efingerd
-
-install: efingerd 
-	cp efingerd $(BINDIR)
+install:
+	cp efingerd.pl $(BINDIR)/efingerd
 	mkdir -p $(DESTDIR)/etc/efingerd
 	cp examples/* $(DESTDIR)/etc/efingerd
 
-install-doc: efingerd 
+install-doc:
 	gzip -9 efingerd.8 -c >$(MANDIR)/efingerd.8.gz

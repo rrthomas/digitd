@@ -10,21 +10,12 @@
 build: build-stamp
 build-stamp:
 	dh_testdir
-
-	
-	# Add here commands to compile the package.
-	$(MAKE) -f Makefile.debian
-
 	touch build-stamp
 
 clean:
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp install-stamp
-
-	# Add here commands to clean up after the build process.
-	$(MAKE) -f Makefile.debian clean
-
 	dh_clean
 
 install: install-stamp
@@ -35,16 +26,12 @@ install-stamp: build-stamp
 	dh_installdirs
 
 	# Add here commands to install the package into debian/tmp.
-	$(MAKE) -f Makefile.debian install DESTDIR=`pwd`/debian/efingerd
+	$(MAKE) install PREFIX=/usr DESTDIR=`pwd`/debian/efingerd
 
 	touch install-stamp
 
 # Build architecture-independent files here.
 binary-indep: build install
-# We have nothing to do by default.
-
-# Build architecture-dependent files here.
-binary-arch: build install
 #	dh_testversion
 	dh_testdir
 	dh_testroot
@@ -63,11 +50,13 @@ binary-arch: build install
 	dh_fixperms
 #	dh_suidregister
 	dh_installdeb
-	dh_shlibdeps
 	dh_gencontrol
-#	dh_makeshlibs
 	dh_md5sums
 	dh_builddeb
+
+# Build architecture-dependent files here.
+binary-arch: build install
+# We have nothing to do by default.
 
 source diff:                                                                  
 	@echo >&2 'source and diff are obsolete - use dpkg-source -b'; false

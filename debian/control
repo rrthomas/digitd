@@ -6,8 +6,8 @@ Standards-Version: 3.7.3
 Build-Depends: debhelper (>= 9)
 
 Package: efingerd
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, netbase, adduser, update-inetd
+Architecture: all
+Depends: perl, netbase, adduser, update-inetd
 Conflicts: cfingerd, fingerd, xfingerd
 Suggests: finger
 Description: Another finger daemon for unix capable of fine-tuning your output.
