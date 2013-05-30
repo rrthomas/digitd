@@ -2,12 +2,9 @@
 
 . /etc/efingerd/log 
 
-echo
-echo -n Hello "$1",
-
-if [ "$2" = "root" ]; then
+if [ "$1" = "root" ]; then
   echo root does not want to be fingered
 else
-  echo this is our dear user "$2":
-  /usr/bin/finger "$2"
+  echo this is our dear user "$1":
+  /usr/bin/finger "$1"
 fi

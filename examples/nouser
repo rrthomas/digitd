@@ -2,38 +2,29 @@
 
 #. /etc/efingerd/log 
 
-echo
-echo Hello "$1",
-
-if [ "$2" = "time" ]; then
+if [ "$1" = "time" ]; then
   echo The time is...
   date
   exit 0
 fi
 
-if [ "$2" = "ping" ]; then
-  echo "PONG!"
-  ping -c 5 "$1"
-  exit 0
-fi
-
-if [ "$2" = "fortune" ]; then
+if [ "$1" = "fortune" ]; then
   /usr/games/fortune
   exit 0
 fi
 
-if [ "$2" = "uptime" ]; then
+if [ "$1" = "uptime" ]; then
   /usr/bin/uptime
   exit 0
 fi
 
-if [ "$2" = "uname" ]; then
+if [ "$1" = "uname" ]; then
   /bin/uname --all
   exit 0
 fi
 
 cat <<EOM
-You tried to finger non existant user!!!
+You tried to finger a non-existent user!!!
 Your attempt is logged and sent to C.I.A., K.G.B. and S.I.S.
 Expect a visit soon.
 EOM

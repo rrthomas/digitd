@@ -3,4 +3,4 @@
 # file /var/log/efingerd.log has to be writeable by UID
 # efingerd runs under for this to work
 
-#echo `date` "$2" fingered from "$1" >>/var/log/efingerd.log
+#echo `date` "$2" fingered >>/var/log/efingerd.log
