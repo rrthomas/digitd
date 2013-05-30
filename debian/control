@@ -10,7 +10,7 @@ Architecture: all
 Depends: perl, netbase, adduser, update-inetd
 Conflicts: cfingerd, fingerd, xfingerd, efingerd
 Suggests: finger
-Description: A simple and safe finger daemon
+Description: A simple, flexible and safe finger daemon
  digitd is ready-to-run out of the box, yet easy to customize. It
  allows users to opt in to being fingerable, rather than the usual
  opt-out.

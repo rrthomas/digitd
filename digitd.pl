@@ -1,4 +1,7 @@
 #!/usr/bin/perl
+# digitd: a simple, flexible and safe finger daemon
+# (c) 2013 Reuben Thomas <rrt@sc3d.org>
+# Released under the GPL version 3, or (at your option) any later version.
 
 use strict;
 use warnings;
