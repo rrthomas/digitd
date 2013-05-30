@@ -104,7 +104,7 @@ static void client_reply(int sd, char *outcome)
 }
 
 
-static int s_in = -1, s_out = -1;
+static int s_in = 0, s_out = 1;
 
 /* ----------------------------------------------------------------
  * killtic:
@@ -191,13 +191,8 @@ int main(int argc, char *argv[])
     openlog("efingerd", LOG_PID, LOG_DAEMON);
     alarm(client_timeout);
     signal(SIGALRM, killtic);
-
-    s_in = 0;
-    s_out = 1;
     inetd_service();
-
-    killsock(0);
-    killsock(1);
+    killsock(s_in);
+    killsock(s_out);
     closelog();
-    exit(-1);
 }
