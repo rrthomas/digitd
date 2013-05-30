@@ -61,7 +61,7 @@ const unsigned short client_timeout = 60; /* number of seconds till disconnect *
  */
 static void killsock(int s)
 {
-    shutdown(s, 2);
+    shutdown(s, SHUT_RDWR);
     close(s);
 }
 
