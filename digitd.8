@@ -4,7 +4,6 @@ digitd \- a simple and safe finger daemon for linux
 .SH SYNOPSIS
 .B digitd
 .PP
-digitd should be run from inetd. See the README for setup information.
 .SH "DESCRIPTION"
 .PP
 .B digitd
@@ -12,6 +11,8 @@ is a simple and safe finger daemon, ready-to-run out of the box, yet
 easy to customize. It allows users to opt in to being fingerable,
 rather than the usual opt-out.
 .SH USAGE
+.PP
+Digitd should be run from inetd. See README for setup information.
 .PP
 The following executables provide information to the fingerer:
 .TP
@@ -22,13 +23,11 @@ run to answer a list request (finger @your.machine)
 run when a user with a ~/.finger file is fingered
 .TP
 /etc/digitd/nouser
-run when a non-existent user, or user without a ~/.finger file is fingered
+run when a non-existent user or user without a ~/.finger file is fingered
 .PP
 Each program is called with a single parameter, the name of the local
-user being fingered, and should output the desired information on
+user being fingered, and should print the desired information on
 standard output.
-.PP
-See examples/ for examples.
 .SH "SEE ALSO"
 finger(1), inetd(8)
 .SH AUTHOR
