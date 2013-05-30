@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-# MAde with the aid of dh_make, by Craig Small
+# Made with the aid of dh_make, by Craig Small
 # Sample debian/rules that uses debhelper. GNU copyright 1997 by Joey Hess.
 # Some lines taken from debmake, by Cristoph Lameter.
 
@@ -32,23 +32,13 @@ install-stamp: build-stamp
 
 # Build architecture-independent files here.
 binary-indep: build install
-#	dh_testversion
 	dh_testdir
 	dh_testroot
-#	dh_installdebconf
 	dh_installdocs
-#	dh_installexamples
-#	dh_installmenu
-#	dh_installemacsen
-#	dh_installinit
-#	dh_installcron
 	dh_installman digitd.8
-#	dh_undocumented
 	dh_installchangelogs 
-#	dh_strip
 	dh_compress
 	dh_fixperms
-#	dh_suidregister
 	dh_installdeb
 	dh_gencontrol
 	dh_md5sums
