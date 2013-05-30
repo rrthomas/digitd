@@ -9,13 +9,6 @@ efingerd (1.6.2.7+nmu1) unstable; urgency=low
 
  -- David Prévot <taffit@debian.org>  Mon, 27 Aug 2012 11:09:38 -0400
 
-efingerd (1.6.2.7ubuntu1) oneiric; urgency=low
-
-  * Makefile.debian: Use LIBS instead of LDFLAGS for libraries, and added LIBS
-    to the compiler.  Fixes FTBFS with --as-needed. (LP: #770943)
-
- -- Dave Walker (Daviey) <DaveWalker@ubuntu.com>  Sat, 17 Sep 2011 09:59:48 +0100
-
 efingerd (1.6.2.7) unstable; urgency=low
 
   * added Russian debconf templates translation (closes: #558279)
