@@ -14,21 +14,30 @@ rather than the usual opt-out.
 .PP
 Digitd should be run from inetd. See README for setup information.
 .PP
+By default, digitd will report that a user does not exist. To allow
+yourself to be fingered, create the file \fB.finger\fR in your home
+directory. Your home directory must be executable by digitd (usually,
+this means world-executable).
+.PP
 The following executables provide information to the fingerer:
 .TP
 /etc/digitd/list
-run to answer a list request (finger @your.machine)
+Run to answer a list request (\fBfinger @your.machine\fR). The default
+script produces the same output as for a non-existent user.
 .TP
 /etc/digitd/user
-run when a user with a ~/.finger file is fingered
+Run when a user with a \fB~/.finger\fR file is fingered. The default script
+gives output like the finger command, but omitting information that
+could compromise security or privacy.
 .TP
 /etc/digitd/nouser
-run when a non-existent user or user without a ~/.finger file is fingered
+Run when a non-existent user or user without a \fB~/.finger\fR file is fingered.
 .PP
 Each program is called with a single parameter, the name of the local
 user being fingered, and should print the desired information on
 standard output.
 .SH "SEE ALSO"
-finger(1), inetd(8)
+.BR finger (1),
+.BR inetd (8)
 .SH AUTHOR
-Reuben Thomas (rrt@sc3d.org)
+Written by Reuben Thomas <rrt@sc3d.org>

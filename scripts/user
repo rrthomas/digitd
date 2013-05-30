@@ -1,21 +1,26 @@
 #!/bin/sh
-# Privacy-respecting finger
+# Privacy and security-respecting finger output
 USER=$1
 passwd_record=$(getent passwd $USER)
 gecos_field=$(echo "$passwd_record" | cut -d ':' -f 5)
 HOME=$(echo "$passwd_record" | cut -d ':' -f 6)
 full_name=$(echo "$gecos_field" | cut -d ',' -f 1)
+pgpkey=$HOME/.pgpkey
 project=$HOME/.project
 plan=$HOME/.plan
-
 printf "$full_name\n"
+
+if test -r $pgpkey; then
+  printf "\nPGP key:\n"
+  cat $pgpkey
+fi
 
 if test -r $project; then
   printf "\nProject:\n"
-  cat ~/.project
+  cat $project
 fi
 
 if test -r $plan; then
   printf "\nPlan:\n"
-  cat ~/.plan
+  cat $plan
 fi

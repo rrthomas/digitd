@@ -14,9 +14,8 @@ or, at your option, any later version.
 It is based on Radovan Garabik’s efingerd, simplified and completely
 rewritten.
 
-By default, digitd will report that a user does not exist. To allow
-yourself to be fingered, create the file .finger in your home
-directory. Your home directory must be executable by digitd.
+digitd implements the Finger User Information Protocol as described in
+RFC 1288: http://tools.ietf.org/html/rfc1288
 
 See the man page digitd(8) for more information.
 
