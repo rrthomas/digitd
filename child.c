@@ -4,10 +4,6 @@
  *
  *	This module is responsible for running 
  *	efingerd as a child service of inetd.
- *	It cares for this child like a good parent should,
- *	providing vital nutrients, love, support, child
- *	reapers, and built in functionality to have the
- *	child kill itself if it stays alive too long.
  *
  * ================================================================== 
  */
@@ -59,17 +55,6 @@ void killtic(int s)
 }
 
 
-void alm(int i)
-{
-    i++;
-    signal(SIGINT, SIG_IGN);	/* Don't want to kill ourselves */
-    kill(-getpgrp(), SIGINT);
-    sleep(TIME_UNTIL_KILL);	/* Wait for the process to terminate itself */
-    kill(-getpgrp(), SIGKILL);
-    exit(0);
-}
-
-
 void safe_exec(char *cmd, char *arg1, char *arg2)
 {
     int pid;
@@ -77,8 +62,6 @@ void safe_exec(char *cmd, char *arg1, char *arg2)
 	execl(cmd, cmd, arg1, arg2, NULL);
 	_exit(0);		/* Should never happen */
     }
-    signal(SIGALRM, alm);
-    alarm(TIME_UNTIL_INT);
     wait(NULL);
 }
 
