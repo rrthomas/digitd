@@ -1,5 +1,8 @@
 #!/bin/sh
 # Privacy and security-respecting finger output
+# Mimics output of finger, but only prints full name, PGP key, project
+# and plan
+
 USER=$1
 passwd_record=$(getent passwd $USER)
 gecos_field=$(echo "$passwd_record" | cut -d ':' -f 5)
@@ -8,19 +11,19 @@ full_name=$(echo "$gecos_field" | cut -d ',' -f 1)
 pgpkey=$HOME/.pgpkey
 project=$HOME/.project
 plan=$HOME/.plan
-printf "$full_name\n"
+printf "Name: $full_name\n"
 
 if test -r $pgpkey; then
-  printf "\nPGP key:\n"
+  printf "PGP key:\n"
   cat $pgpkey
 fi
 
 if test -r $project; then
-  printf "\nProject:\n"
+  printf "Project:\n"
   cat $project
 fi
 
 if test -r $plan; then
-  printf "\nPlan:\n"
+  printf "Plan:\n"
   cat $plan
 fi
