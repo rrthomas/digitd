@@ -40,10 +40,9 @@ static void die(int s)
 
 static void run(const char *cmd, char *arg1)
 {
-    int pid;
-    if ((pid = fork()) == 0) {	/* Program inherits the socket */
+    if (fork() == 0) {	/* Program inherits the socket */
 	execl(cmd, cmd, arg1, NULL);
-	_exit(0);		/* Should never happen */
+	abort(); /* Should never happen */
     }
     wait(NULL);
 }
