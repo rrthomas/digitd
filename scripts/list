@@ -1,7 +1,10 @@
 #!/bin/sh
 
-echo "Users currently logged in are:"
-echo
-who -uHw        # and display the user listing in readable form
-                # or:
-# finger        # classical alternative
+# Giving a list of users is a privacy and security risk
+#echo "Users currently logged in are:"
+#echo
+#who -uHw        # and display the user listing in readable form
+#                # or:
+## finger        # classical alternative
+
+echo "Finger online user list denied"

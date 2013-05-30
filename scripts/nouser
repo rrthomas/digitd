@@ -1,28 +1,2 @@
 #!/bin/sh
-
-if [ "$1" = "time" ]; then
-  echo The time is...
-  date
-  exit 0
-fi
-
-if [ "$1" = "fortune" ]; then
-  /usr/games/fortune
-  exit 0
-fi
-
-if [ "$1" = "uptime" ]; then
-  /usr/bin/uptime
-  exit 0
-fi
-
-if [ "$1" = "uname" ]; then
-  /bin/uname --all
-  exit 0
-fi
-
-cat <<EOM
-You tried to finger a non-existent user!!!
-Your attempt is logged and sent to C.I.A., K.G.B. and S.I.S.
-Expect a visit soon.
-EOM
+echo "No such user"

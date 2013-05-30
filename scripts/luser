@@ -1,8 +1,21 @@
 #!/bin/sh
+# Privacy-respecting finger
+USER=$1
+passwd_record=$(getent passwd $USER)
+gecos_field=$(echo "$passwd_record" | cut -d ':' -f 5)
+HOME=$(echo "$passwd_record" | cut -d ':' -f 6)
+full_name=$(echo "$gecos_field" | cut -d ',' -f 1)
+project=$HOME/.project
+plan=$HOME/.plan
 
-if [ "$1" = "root" ]; then
-  echo root does not want to be fingered
-else
-  echo this is our dear user "$1":
-  /usr/bin/finger "$1"
+printf "$full_name\n"
+
+if test -r $project; then
+  printf "\nProject:\n"
+  cat ~/.project
+fi
+
+if test -r $plan; then
+  printf "\nPlan:\n"
+  cat ~/.plan
 fi

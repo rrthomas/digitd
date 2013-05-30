@@ -1,6 +1,0 @@
-#!/bin/sh
-
-# file /var/log/efingerd.log has to be writeable by UID
-# efingerd runs under for this to work
-
-#echo `date` "$2" fingered >>/var/log/efingerd.log
