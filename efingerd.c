@@ -190,7 +190,7 @@ static void do_finger(char *user, char *remote_address, int sd_out)
  *	user lookups, replies, etcetera.
  * ------------------------------------------------------------------
  */
-static void inetd_service(int sd_in, int sd_out)
+static void inetd_service(void)
 {
     struct sockaddr_in sin;
     char buffer[MAX_SOCK_LENGTH];
@@ -199,16 +199,16 @@ static void inetd_service(int sd_in, int sd_out)
 
     if (getpeername(s_in, (struct sockaddr *) &sin, &sinsize) == -1) {
 	syslog(LOG_NOTICE, "error: getpeername: %s", strerror(errno));
-	client_reply(sd_out, "401 getpeername failed\r\n");
+	client_reply(s_out, "401 getpeername failed\r\n");
 	return;			/* the error implies the net is down, but try */
     }
     getnameinfo((struct sockaddr *)&sin, sinsize,
 		remote_address, sizeof(remote_address),
 		NULL, 0, 0);
 
-    if (getsockname(sd_in, (struct sockaddr *) &sin, &sinsize) == -1) {
+    if (getsockname(s_in, (struct sockaddr *) &sin, &sinsize) == -1) {
 	syslog(LOG_ERR, "error: getsockname: %s", strerror(errno));
-	client_reply(sd_out, "402 getsockname failed\r\n");
+	client_reply(s_out, "402 getsockname failed\r\n");
 	return;
     }
 
@@ -246,7 +246,9 @@ int main(int argc, char *argv[])
     alarm(client_timeout);
     signal(SIGALRM, killtic);
 
-    inetd_service(0, 1);
+    s_in = 0;
+    s_out = 1;
+    inetd_service();
 
     killsock(0);
     killsock(1);
