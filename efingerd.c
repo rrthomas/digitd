@@ -16,46 +16,24 @@
 #include <stdlib.h>
 #include <string.h>
 #include <signal.h>
-
 #include <unistd.h>
-#include <errno.h>
-#include <fcntl.h>
-
-#include <pwd.h>
 #include <syslog.h>
-
-#include <sys/stat.h>
-#include <sys/types.h>
+#include <pwd.h>
 #include <sys/socket.h>
+#include <sys/types.h>
 #include <sys/wait.h>
-#include <sys/time.h>
-
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <netdb.h>
-#include <utmp.h>
-#include <unistd.h>
-
-
-#define MAX_SOCK_LENGTH		100
+#include <sys/stat.h>
 
 #define EFINGER_LIST		"/etc/efingerd/list"
 #define EFINGER_LUSER		"/etc/efingerd/luser"
 #define EFINGER_NOUSER		"/etc/efingerd/nouser"
-
 #define EFINGER_USER_FILE	".finger"
 
-/* ==================================================================
- * GLOBALS
- * ==================================================================
- */
-/* SERVICE BEHAVIOR     */
-const unsigned short client_timeout = 60; /* number of seconds till disconnect */
+const unsigned client_timeout = 60; /* number of seconds till disconnect */
 
 
 /* ------------------------------------------------------------------
- * killsock:
- *	violently kills a socket
+ * killsock: violently kill a socket
  * ------------------------------------------------------------------
  */
 static void killsock(int s)
@@ -66,11 +44,10 @@ static void killsock(int s)
 
 
 /* ------------------------------------------------------------------
- * get_request:
- *	fgets for file descriptors
+ * fdgets: fgets for file descriptors
  * ------------------------------------------------------------------
  */
-static int get_request(int d, char buffer[], u_short len)
+static int fdgets(int d, char buffer[], u_short len)
 {
     u_short i;
     char ch;
@@ -94,12 +71,10 @@ static int get_request(int d, char buffer[], u_short len)
 
 
 /* ----------------------------------------------------------------
- * killtic:
- *	kill this process after a pre-determined
- *	timeout period. (SIGALRM handler)
+ * die: shut down the process. (SIGALRM handler)
  * ----------------------------------------------------------------
  */
-static void killtic(int s)
+static void die(int s)
 {
     killsock(STDIN_FILENO);
     killsock(STDOUT_FILENO);
@@ -139,7 +114,7 @@ static void do_finger(char *user)
 
 int main(int argc, char *argv[])
 {
-    char buffer[MAX_SOCK_LENGTH];
+    char user[100];
 
     if (isatty(STDIN_FILENO)) {
 	fprintf(stderr, "efingerd version %s\nNot for interactive use.\n", ID_VERSION);
@@ -148,8 +123,8 @@ int main(int argc, char *argv[])
 
     openlog("efingerd", LOG_PID, LOG_DAEMON);
     alarm(client_timeout);
-    signal(SIGALRM, killtic);
-    get_request(STDIN_FILENO, buffer, MAX_SOCK_LENGTH);
-    do_finger(buffer);
-    killtic(0);
+    signal(SIGALRM, die);
+    fdgets(STDIN_FILENO, user, sizeof(user));
+    do_finger(user);
+    die(0);
 }
