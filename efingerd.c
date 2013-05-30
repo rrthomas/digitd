@@ -66,7 +66,8 @@ static void killsock(int s)
 
 
 /* ------------------------------------------------------------------
- * get_request	:	a fgets for file descriptors
+ * get_request:
+ *	fgets for file descriptors
  * ------------------------------------------------------------------
  */
 static int get_request(int d, char buffer[], u_short len)
@@ -94,7 +95,7 @@ static int get_request(int d, char buffer[], u_short len)
 
 /* ------------------------------------------------------------------
  * client_reply:
- *	send a reply back to the client..
+ *	send a reply back to the client
  * ------------------------------------------------------------------
  */
 static void client_reply(int sd, char *outcome)
