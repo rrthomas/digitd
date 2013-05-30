@@ -50,7 +50,7 @@ static void run(const char *cmd, char *arg1)
     wait(NULL);
 }
 
-static void do_finger(char *user)
+static void finger(char *user)
 {
     const char *prog = EFINGER_NOUSER;
     if (strlen(user) == 0)
@@ -86,6 +86,6 @@ int main(int argc, char *argv[])
     len = strlen(user);
     if (user[len - 1] == '\r') /* Can't assume this, some buggy clients send only \n */
 	user[len - 1] = '\0';
-    do_finger(user);
+    finger(user);
     die(0);
 }
