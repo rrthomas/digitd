@@ -40,7 +40,7 @@ static void die(int s)
     exit(0);
 }
 
-static void safe_exec(const char *cmd, char *arg1)
+static void run(const char *cmd, char *arg1)
 {
     int pid;
     if ((pid = fork()) == 0) {	/* Program inherits the socket */
@@ -66,7 +66,7 @@ static void do_finger(char *user)
 	    free(path);
 	}
     }
-    safe_exec(prog, user);
+    run(prog, user);
 }
 
 int main(int argc, char *argv[])
