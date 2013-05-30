@@ -1,13 +1,14 @@
 PREFIX=/usr/local
 BINDIR=$(DESTDIR)$(PREFIX)/sbin
 MANDIR=$(DESTDIR)$(PREFIX)/man/man8
+PROGRAM=digitd
 
 all:
 
 install:
-	cp efingerd.pl $(BINDIR)/efingerd
-	mkdir -p $(DESTDIR)/etc/efingerd
-	cp examples/* $(DESTDIR)/etc/efingerd
+	cp $(PROGRAM).pl $(BINDIR)/$(PROGRAM)
+	mkdir -p $(DESTDIR)/etc/$(PROGRAM)
+	cp examples/* $(DESTDIR)/etc/$(PROGRAM)
 
 install-doc:
-	gzip -9 efingerd.8 -c >$(MANDIR)/efingerd.8.gz
+	gzip -9 $(PROGRAM).8 -c >$(MANDIR)/$(PROGRAM).8.gz

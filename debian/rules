@@ -26,7 +26,7 @@ install-stamp: build-stamp
 	dh_installdirs
 
 	# Add here commands to install the package into debian/tmp.
-	$(MAKE) install PREFIX=/usr DESTDIR=`pwd`/debian/efingerd
+	$(MAKE) install PREFIX=/usr DESTDIR=`pwd`/debian/digitd
 
 	touch install-stamp
 
@@ -42,7 +42,7 @@ binary-indep: build install
 #	dh_installemacsen
 #	dh_installinit
 #	dh_installcron
-	dh_installman efingerd.8
+	dh_installman digitd.8
 #	dh_undocumented
 	dh_installchangelogs 
 	dh_strip

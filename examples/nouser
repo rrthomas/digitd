@@ -1,7 +1,5 @@
 #!/bin/sh
 
-#. /etc/efingerd/log 
-
 if [ "$1" = "time" ]; then
   echo The time is...
   date

@@ -6,7 +6,7 @@ use warnings;
 use Sys::Syslog qw(:standard :macros);
 
 my $VERSION = "2.0";
-my $PROGRAM = "efingerd";
+my $PROGRAM = "digitd";
 
 my $SCRIPT_LIST = "/etc/$PROGRAM/list";
 my $SCRIPT_LUSER = "/etc/$PROGRAM/luser";

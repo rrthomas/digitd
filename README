@@ -1,77 +1,50 @@
-=========================================================
-                    efingerd
+                                digitd
 
-  Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>
-http://melkor.dnp.fmph.uniba.sk/~garabik/efingerd.html
+                     Reuben Thomas <rrt@sc3d.org>
+                  https://github.com/rrthomas/digitd
 
-=========================================================
 
-efingerd is a nice finger daemon, giving you complete control over
-what are you going to send to somebody fingering your computer.
+digitd is a simple and safe finger daemon, giving you complete control
+over what you send to somebody fingering your computer.
 
-It is based on my xtell program, which is in turn based on ident2 by
-Michael Bacarella.
+It was based on Radovan Garabik’s efingerd, simplified and completely
+rewritten.
 
-Requirements: Perl on a system supporting syslog (Linux, Mac OS X, ...)
+Requirements: Perl on a system supporting syslog (Linux, Mac OS X,…)
 
-By default, finger will report that a user does not exist. To allow
+By default, digitd will report that a user does not exist. To allow
 yourself to be fingered, create the file .finger in your home
-directory.
+directory. Your home directory must be executable by digitd.
+
+See the man page digitd(8) for more information.
 
 
-Installation
-============
+Installation on Debian/Ubuntu
+=============================
 
-If you have Debian system with all necessary packages installed, type
-dpkg-buildpackage (or dpkg-buildpackage -rfakeroot) in the package's
-directory, then type: dpkg -i ../efingerd*deb
+Unpack the source, change to the top-level source directory, then
+type:
 
-Else:
+  dpkg-buildpackage
+  sudo dpkg -i ../digitd*deb
 
-1) look at Makefile
 
-2) become root
+Generic installation
+====================
 
-3) type: make install
+1) Become root
 
-4) replace this line in /etc/inetd.conf
+2) Type: make install
 
-finger	stream	tcp	nowait	nobody	/usr/sbin/tcpd	/usr/sbin/in.fingerd
+3) Add this line to /etc/inetd.conf
 
-with this line:
-
-finger	stream	tcp	nowait	nobody	/usr/sbin/tcpd	/usr/local/sbin/efingerd
+finger	stream	tcp	nowait	nobody	/usr/sbin/tcpd	/usr/local/sbin/digitd
 
 Alternatively, you can create your own user under which the daemon should
-run, and replace nobody with this user name (e.g. efingerd)
+run, and replace nobody with this user name (e.g. digitd)
 
-Notice that the entries are separated by tabs, not spaces.
+If there is already a finger line, comment it out.
 
-5) set up your own scripts providing the information about your machine in
-   /etc/efingerd/
-   You need these scripts:
+Note that the entries are separated by tabs, not spaces.
 
-   /etc/efingerd/list
-          - what to display when somebody does finger @your.machine
-   /etc/efingerd/luser
-          - what to display when somebody fingers user on your machine, and
-            the fingered user has a ~/.finger file
-   /etc/efingerd/nouser
-          - what to display when somebody fingers non-existent user on
-            your machine
-
-  If the local user does not have has a file ~/.finger that can be
-  found by the daemon (the user's home directory must be executable by
-  the daemon), then the daemon will act as if the user does not exist.
-
-  These are normal programs, displaying on standard output desired
-  information. These programs are called with following parameters:
-  $1 - name of local user being fingered
-
-  The lines should end in CRLF (as for RFC), but in practise this does not
-  make much difference.
-
-  Look at examples*/ for examples.
-  Don't forget that these programs must be executable by the daemon UID.
-
-6) restart inetd with killall -HUP inetd
+4) Restart inetd with: killall -HUP inetd

@@ -1,16 +1,16 @@
-Source: efingerd
+Source: digitd
 Section: net
 Priority: optional
-Maintainer: Radovan Garabík <garabik@kassiopeia.juls.savba.sk>
+Maintainer: Reuben Thomas <rrt@sc3d.org>
 Standards-Version: 3.7.3
 Build-Depends: debhelper (>= 9)
 
-Package: efingerd
+Package: digitd
 Architecture: all
 Depends: perl, netbase, adduser, update-inetd
-Conflicts: cfingerd, fingerd, xfingerd
+Conflicts: cfingerd, fingerd, xfingerd, efingerd
 Suggests: finger
-Description: Another finger daemon for unix capable of fine-tuning your output.
- efingerd is a finger daemon, which executes programs and displays their
- output. This gives you complete control over what to display and to who, 
- and an extreme configurability.
+Description: A simple and safe finger daemon
+ digitd is ready-to-run out of the box, yet easy to customize. It
+ allows users to opt in to being fingerable, rather than the usual
+ opt-out.

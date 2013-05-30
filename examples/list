@@ -1,12 +1,7 @@
 #!/bin/sh
 
-. /etc/efingerd/log  # do some logging
-
 echo "Users currently logged in are:"
 echo
 who -uHw        # and display the user listing in readable form
-                 # or:
-# finger         # classical alternative
-                 # or:
-# ps aux         # this reveals too much - do not use this command, unless 
-                 # you trust people who finger you
+                # or:
+# finger        # classical alternative

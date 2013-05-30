@@ -26,20 +26,20 @@ umask 022
 
 # add daemon user
 
-if ! grep -q '^efingerd:' /etc/passwd; then 
-    adduser --quiet --system --no-create-home --disabled-password --home /etc/efingerd --gecos "efingerd daemon" efingerd
+if ! grep -q '^digitd:' /etc/passwd; then 
+    adduser --quiet --system --no-create-home --disabled-password --home /etc/digitd --gecos "digitd daemon" digitd
 fi
 
 # create log file
 
-LOGFILE=/var/log/efingerd.log
+LOGFILE=/var/log/digitd.log
 if [ ! -f $LOGFILE ]; then 
   touch $LOGFILE
   chmod 0644 $LOGFILE
-  chown efingerd:adm $LOGFILE
+  chown digitd:adm $LOGFILE
 fi
 
 update-inetd --remove 'finger\t.*'
-update-inetd --group INFO --add "finger		stream	tcp	nowait	efingerd	/usr/sbin/tcpd	/usr/sbin/efingerd"
+update-inetd --group INFO --add "finger		stream	tcp	nowait	digitd	/usr/sbin/tcpd	/usr/sbin/digitd"
 
 exit 0
