@@ -19,7 +19,6 @@
 #include <unistd.h>
 #include <syslog.h>
 #include <pwd.h>
-#include <sys/socket.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
@@ -32,56 +31,14 @@
 const unsigned client_timeout = 60; /* number of seconds till disconnect */
 
 
-/* ------------------------------------------------------------------
- * killsock: violently kill a socket
- * ------------------------------------------------------------------
- */
-static void killsock(int s)
-{
-    shutdown(s, SHUT_RDWR);
-    close(s);
-}
-
-
-/* ------------------------------------------------------------------
- * fdgets: fgets for file descriptors
- * ------------------------------------------------------------------
- */
-static int fdgets(int d, char buffer[], u_short len)
-{
-    u_short i;
-    char ch;
-
-    memset(buffer, 0, len);
-    for (i = 0; i < len; i++) {
-	if (read(d, &ch, 1) != 1)
-	    return -1;
-	else if (ch == '\n') /* some buggy clients send only \n */
-	    break;
-	else if (ch == '\r') {
-	    read(d, &ch, 1); /* should read the following \n */
-	    break;
-	}
-	else
-	    buffer[i] = ch;
-    }
-    buffer[i] = '\0';
-    return i;
-}
-
-
-/* ----------------------------------------------------------------
- * die: shut down the process. (SIGALRM handler)
- * ----------------------------------------------------------------
- */
+/* Shut down the process (SIGALRM handler) */
 static void die(int s)
 {
-    killsock(STDIN_FILENO);
-    killsock(STDOUT_FILENO);
+    close(STDIN_FILENO);
+    close(STDOUT_FILENO);
     closelog();
     exit(0);
 }
-
 
 static void safe_exec(const char *cmd, char *arg1)
 {
@@ -115,6 +72,7 @@ static void do_finger(char *user)
 int main(int argc, char *argv[])
 {
     char user[100];
+    size_t len;
 
     if (isatty(STDIN_FILENO)) {
 	fprintf(stderr, "efingerd version %s\nNot for interactive use.\n", ID_VERSION);
@@ -124,7 +82,10 @@ int main(int argc, char *argv[])
     openlog("efingerd", LOG_PID, LOG_DAEMON);
     alarm(client_timeout);
     signal(SIGALRM, die);
-    fdgets(STDIN_FILENO, user, sizeof(user));
+    fgets(user, sizeof(user), stdin);
+    len = strlen(user);
+    if (user[len - 1] == '\r') /* Can't assume this, some buggy clients send only \n */
+	user[len - 1] = '\0';
     do_finger(user);
     die(0);
 }
