@@ -8,10 +8,10 @@ use Sys::Syslog qw(:standard :macros);
 my $VERSION = "2.0";
 my $PROGRAM = "efingerd";
 
-my $EFINGER_LIST = "/etc/$PROGRAM/list";
-my $EFINGER_LUSER = "/etc/$PROGRAM/luser";
-my $EFINGER_NOUSER = "/etc/$PROGRAM/nouser";
-my $EFINGER_USER_FILE = ".finger";
+my $SCRIPT_LIST = "/etc/$PROGRAM/list";
+my $SCRIPT_LUSER = "/etc/$PROGRAM/luser";
+my $SCRIPT_NOUSER = "/etc/$PROGRAM/nouser";
+my $USER_FILE = ".finger";
 
 die("$PROGRAM version $VERSION\nNot for interactive use.\n") if -t STDIN;
 
@@ -25,13 +25,13 @@ $SIG{XCPU} = sub {
 
 my $user = <STDIN>;
 $user =~ s/\r?\n//; # Some buggy clients omit the \r
-my $prog = $EFINGER_NOUSER;
+my $prog = $SCRIPT_NOUSER;
 if (length($user) == 0) {
-  $prog = $EFINGER_LIST;
+  $prog = $SCRIPT_LIST;
 } else {
   my ($dir) = (getpwnam($user))[7];
-  if ($dir && stat("$dir/$EFINGER_USER_FILE")) {
-    $prog = $EFINGER_LUSER;
+  if ($dir && stat("$dir/$USER_FILE")) {
+    $prog = $SCRIPT_LUSER;
   }
 }
 system $prog, $user;
