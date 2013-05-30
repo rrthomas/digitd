@@ -59,8 +59,6 @@ efingerd recognizes following options:
 
    --help  short help
    --version or -v Print version information and exit.
-   -t X       Lifetime for spawned services (in seconds)
-              ex: -t 25  maintain connections for up to 25 seconds
    -n         Do not look up addresses, use IP numbers instead
 
 6) set up your own scripts providing the information about your machine in

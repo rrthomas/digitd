@@ -3,7 +3,7 @@
 efingerd \- another finger daemon for linux
 .SH SYNOPSIS
 .B efingerd
-.I "[-t X] [-n] [--help] [--version]"
+.I "[-n] [--help] [--version]"
 
 efingerd should be run from inetd.
 
@@ -19,10 +19,6 @@ Show summary of options and exit.
 .TP
 .B \-\-version
 Show version and exit.
-.TP
-.B \-t X
-Lifetime for spawned services (in seconds)
-ex: \-t 25  maintain connections for up to 25 seconds (default: -t 60)
 .TP
 .B \-n
 Do not lookup addresses, use IP numbers instead

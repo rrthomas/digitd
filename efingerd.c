@@ -11,7 +11,7 @@
  */
 #include "efingerd.h"
 
-unsigned short client_timeout = 60;
+const unsigned short client_timeout = 60;
 
 
 /* ------------------------------------------------------------------
@@ -112,10 +112,6 @@ int main (int argc, char *argv[])
 	for (i = 1; i < argc; i++) {
 		if (argv[i][0] == '-') {
 			switch (argv[i][1]) {
-				case 't':
-					client_timeout = atoi ( argv[++i]);
-					break;
-
 				case 'v':
 					print_version ();
 					

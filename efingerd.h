@@ -41,7 +41,7 @@
  */
 /* SERVICE BEHAVIOR     */
 unsigned char   resolve_addr;		/* reverse lookup addresses	*/
-unsigned short	client_timeout;		/* number of seconds till disconnect */
+const unsigned short	client_timeout;		/* number of seconds till disconnect */
 /* ==================================================================
  * PROTOTYPES:
  * ==================================================================
