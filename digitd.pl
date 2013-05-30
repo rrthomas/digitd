@@ -12,7 +12,7 @@ my $VERSION = "2.0";
 my $PROGRAM = "digitd";
 
 my $SCRIPT_LIST = "/etc/$PROGRAM/list";
-my $SCRIPT_LUSER = "/etc/$PROGRAM/luser";
+my $SCRIPT_USER = "/etc/$PROGRAM/user";
 my $SCRIPT_NOUSER = "/etc/$PROGRAM/nouser";
 my $USER_FILE = ".finger";
 
@@ -34,7 +34,7 @@ if (length($user) == 0) {
 } else {
   my ($dir) = (getpwnam($user))[7];
   if ($dir && stat("$dir/$USER_FILE")) {
-    $prog = $SCRIPT_LUSER;
+    $prog = $SCRIPT_USER;
   }
 }
 system $prog, $user;
