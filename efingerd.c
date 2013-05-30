@@ -188,7 +188,7 @@ static void inetd_service(void)
     struct sockaddr_in sin;
     char buffer[MAX_SOCK_LENGTH];
     socklen_t sinsize = sizeof(struct sockaddr_in);
-    char remote_address[100];
+    char remote_host[NI_MAXHOST];
 
     if (getpeername(s_in, (struct sockaddr *)&sin, &sinsize) == -1) {
 	syslog(LOG_NOTICE, "error: getpeername: %s", strerror(errno));
@@ -196,7 +196,7 @@ static void inetd_service(void)
 	return;			/* the error implies the net is down, but try */
     }
     getnameinfo((struct sockaddr *)&sin, sinsize,
-		remote_address, sizeof(remote_address),
+		remote_host, sizeof(remote_host),
 		NULL, 0, 0);
 
     if (getsockname(s_in, (struct sockaddr *)&sin, &sinsize) == -1) {
@@ -205,7 +205,7 @@ static void inetd_service(void)
 	return;
     }
     get_request(s_in, buffer, MAX_SOCK_LENGTH);
-    do_finger(buffer, remote_address);
+    do_finger(buffer, remote_host);
 }
 
 
