@@ -33,7 +33,7 @@ directory, then type: dpkg -i ../efingerd*deb
 
 Else:
 
-1) look at Makefile and define.h
+1) look at Makefile
 
 2) type: make
    This should produce the executable efingerd.
