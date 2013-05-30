@@ -270,7 +270,7 @@ int main(int argc, char *argv[])
 	    case '-':
 		if (strncmp("version", argv[i]+2, 7) == 0)
 		    print_version();
-		else if (strcmp("help", argv[i]+2) == 0)
+		else if (strncmp("help", argv[i]+2, 4) == 0)
 		    usage(argv[0]);
 		break;
 	    }
