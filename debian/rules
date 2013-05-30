@@ -58,8 +58,5 @@ binary-indep: build install
 binary-arch: build install
 # We have nothing to do by default.
 
-source diff:                                                                  
-	@echo >&2 'source and diff are obsolete - use dpkg-source -b'; false
-
 binary: binary-indep binary-arch
 .PHONY: build clean binary-indep binary-arch binary
