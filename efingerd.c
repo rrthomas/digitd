@@ -56,8 +56,8 @@ static void finger(char *user)
 	struct passwd *pwd = getpwnam(user);
 	if (pwd != NULL) {
 	    char *path;
-	    struct stat st;
 	    asprintf(&path, "%s/%s", pwd->pw_dir, EFINGER_USER_FILE);
+	    struct stat st;
 	    if (stat(path, &st) == 0)
 		prog = EFINGER_LUSER;
 	    free(path);
@@ -68,9 +68,6 @@ static void finger(char *user)
 
 int main(int argc, char *argv[])
 {
-    char user[100];
-    size_t len;
-
     if (isatty(STDIN_FILENO)) {
 	fprintf(stderr, "efingerd version %s\nNot for interactive use.\n", ID_VERSION);
 	exit(0);
@@ -78,8 +75,9 @@ int main(int argc, char *argv[])
 
     openlog("efingerd", LOG_PID, LOG_DAEMON);
     signal(SIGXCPU, die);
+    char user[100];
     fgets(user, sizeof(user), stdin);
-    len = strlen(user);
+    size_t len = strlen(user);
     if (user[len - 1] == '\r') /* Can't assume this, some buggy clients send only \n */
 	user[len - 1] = '\0';
     finger(user);
