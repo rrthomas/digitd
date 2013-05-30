@@ -30,15 +30,6 @@ if ! grep -q '^digitd:' /etc/passwd; then
     adduser --quiet --system --no-create-home --disabled-password --home /etc/digitd --gecos "digitd daemon" digitd
 fi
 
-# create log file
-
-LOGFILE=/var/log/digitd.log
-if [ ! -f $LOGFILE ]; then 
-  touch $LOGFILE
-  chmod 0644 $LOGFILE
-  chown digitd:adm $LOGFILE
-fi
-
 update-inetd --remove 'finger\t.*'
 update-inetd --group INFO --add "finger		stream	tcp	nowait	digitd	/usr/sbin/tcpd	/usr/sbin/digitd"
 
