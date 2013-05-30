@@ -28,8 +28,6 @@
 #define EFINGER_NOUSER		"/etc/efingerd/nouser"
 #define EFINGER_USER_FILE	".finger"
 
-const unsigned client_timeout = 60; /* number of seconds till disconnect */
-
 
 /* Shut down the process (SIGALRM handler) */
 static void die(int s)
@@ -80,8 +78,7 @@ int main(int argc, char *argv[])
     }
 
     openlog("efingerd", LOG_PID, LOG_DAEMON);
-    alarm(client_timeout);
-    signal(SIGALRM, die);
+    signal(SIGXCPU, die);
     fgets(user, sizeof(user), stdin);
     len = strlen(user);
     if (user[len - 1] == '\r') /* Can't assume this, some buggy clients send only \n */
