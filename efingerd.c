@@ -197,21 +197,20 @@ static void inetd_service(void)
     socklen_t sinsize = sizeof(struct sockaddr_in);
     char remote_address[100];
 
-    if (getpeername(s_in, (struct sockaddr *) &sin, &sinsize) == -1) {
+    if (getpeername(s_in, (struct sockaddr *)&sin, &sinsize) == -1) {
 	syslog(LOG_NOTICE, "error: getpeername: %s", strerror(errno));
-	client_reply(s_out, "401 getpeername failed\r\n");
+	client_reply(s_out, "getpeername failed\r\n");
 	return;			/* the error implies the net is down, but try */
     }
     getnameinfo((struct sockaddr *)&sin, sinsize,
 		remote_address, sizeof(remote_address),
 		NULL, 0, 0);
 
-    if (getsockname(s_in, (struct sockaddr *) &sin, &sinsize) == -1) {
+    if (getsockname(s_in, (struct sockaddr *)&sin, &sinsize) == -1) {
 	syslog(LOG_ERR, "error: getsockname: %s", strerror(errno));
-	client_reply(s_out, "402 getsockname failed\r\n");
+	client_reply(s_out, "getsockname failed\r\n");
 	return;
     }
-
     get_request(s_in, buffer, MAX_SOCK_LENGTH);
     do_finger(buffer, remote_address, s_out);
 }
