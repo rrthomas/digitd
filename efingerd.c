@@ -137,22 +137,10 @@ static void do_finger(char *user)
     safe_exec(prog, user);
 }
 
-/* ------------------------------------------------------------------
- * inetd_service:
- *	this function does the actual pipe handling
- *	user lookups, replies, etcetera.
- * ------------------------------------------------------------------
- */
-static void inetd_service(void)
-{
-    char buffer[MAX_SOCK_LENGTH];
-    get_request(STDIN_FILENO, buffer, MAX_SOCK_LENGTH);
-    do_finger(buffer);
-}
-
-
 int main(int argc, char *argv[])
 {
+    char buffer[MAX_SOCK_LENGTH];
+
     if (isatty(STDIN_FILENO)) {
 	fprintf(stderr, "efingerd version %s\nNot for interactive use.\n", ID_VERSION);
 	exit(0);
@@ -161,6 +149,7 @@ int main(int argc, char *argv[])
     openlog("efingerd", LOG_PID, LOG_DAEMON);
     alarm(client_timeout);
     signal(SIGALRM, killtic);
-    inetd_service();
+    get_request(STDIN_FILENO, buffer, MAX_SOCK_LENGTH);
+    do_finger(buffer);
     killtic(0);
 }
