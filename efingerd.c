@@ -103,35 +103,6 @@ static void client_reply(int sd, char *outcome)
 }
 
 
-/* ------------------------------------------------------------------
- * usage:
- * ------------------------------------------------------------------
- */
-static void usage(char *progname)
-{
-    fprintf(stderr,
-	    "usage: %s [options]\n"
-	    "   --help     This information.\n"
-	    "   --version  Print version information and exit.\n"
-	    "   -t X       Time to keep connection.\n"
-	    "              ex: -t 25  maintain connections for up to 25 seconds.\n",
-	    progname);
-    exit(0);
-}
-
-
-/* ------------------------------------------------------------------
- * print_version:
- *	wouldn't want to disappoint anyone.
- * ------------------------------------------------------------------
- */
-static void print_version(void)
-{
-    fprintf(stderr, "efingerd %s\n", ID_VERSION);
-    exit(0);
-}
-
-
 static int s_in = -1, s_out = -1;
 
 /* ----------------------------------------------------------------
@@ -211,27 +182,9 @@ static void inetd_service(void)
 
 int main(int argc, char *argv[])
 {
-    u_short i;
-
-    for (i = 1; i < argc; i++) {
-	if (argv[i][0] == '-') {
-	    switch (argv[i][1]) {
-	    case 'v':
-		print_version();
-		break;
-
-	    case 'h':
-		usage(argv[0]);
-		break;
-
-	    case '-':
-		if (strncmp("version", argv[i]+2, 7) == 0)
-		    print_version();
-		else if (strncmp("help", argv[i]+2, 4) == 0)
-		    usage(argv[0]);
-		break;
-	    }
-	}
+    if (isatty(STDIN_FILENO)) {
+	fprintf(stderr, "efingerd version %s\nNot for interactive use.\n", ID_VERSION);
+	exit(0);
     }
 
     openlog("efingerd", LOG_PID, LOG_DAEMON);

@@ -54,11 +54,6 @@ run, and replace nobody with this user name (e.g. efingerd)
 
 Notice that the entries are separated by tabs, not spaces.
 
-efingerd recognizes following options:
-
-   --help  short help
-   --version or -v Print version information and exit.
-
 6) set up your own scripts providing the information about your machine in
    /etc/efingerd/
    You need these scripts:
