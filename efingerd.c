@@ -148,7 +148,7 @@ static void killtic(int s)
 }
 
 
-static void safe_exec(char *cmd, char *arg1, char *arg2)
+static void safe_exec(const char *cmd, char *arg1, char *arg2)
 {
     int pid;
     if ((pid = fork()) == 0) {	/* Program inherits the socket */
@@ -158,30 +158,23 @@ static void safe_exec(char *cmd, char *arg1, char *arg2)
     wait(NULL);
 }
 
-static void do_finger(char *user, char *remote_address, int sd_out)
+static void do_finger(char *user, char *remote_address)
 {
-    struct passwd *passs;
-    struct stat st;
-    char path[200];
-
+    const char *prog = EFINGER_NOUSER;
     if (strlen(user) == 0)
-	safe_exec(EFINGER_LIST, remote_address, NULL);
+	prog = EFINGER_LIST;
     else {
-	passs = getpwnam(user);
-	if (passs == NULL)
-	    safe_exec(EFINGER_NOUSER, remote_address, user);
-	else {
-	    if (sizeof(path) >= strlen(passs->pw_dir) + sizeof(EFINGER_USER_FILE) + 1) {
-		strncpy(path, passs->pw_dir, sizeof(path));
-		strcat(path, "/");
-		strcat(path, EFINGER_USER_FILE);
-		if (stat(path, &st))
-		    safe_exec(EFINGER_NOUSER, remote_address, user);
-		else
-		    safe_exec(EFINGER_LUSER, remote_address, user);
-	    }
+	struct passwd *pwd = getpwnam(user);
+	if (pwd != NULL) {
+	    char *path;
+	    struct stat st;
+	    asprintf(&path, "%s/%s", pwd->pw_dir, EFINGER_USER_FILE);
+	    if (stat(path, &st) == 0)
+		prog = EFINGER_LUSER;
+	    free(path);
 	}
     }
+    safe_exec(prog, remote_address, user);
 }
 
 /* ------------------------------------------------------------------
@@ -212,7 +205,7 @@ static void inetd_service(void)
 	return;
     }
     get_request(s_in, buffer, MAX_SOCK_LENGTH);
-    do_finger(buffer, remote_address, s_out);
+    do_finger(buffer, remote_address);
 }
 
 
