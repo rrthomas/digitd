@@ -2,12 +2,12 @@ Source: digitd
 Section: net
 Priority: optional
 Maintainer: Reuben Thomas <rrt@sc3d.org>
-Standards-Version: 3.7.3
+Standards-Version: 3.8.3
 Build-Depends: debhelper (>= 9)
 
 Package: digitd
 Architecture: all
-Depends: perl, netbase, adduser, update-inetd
+Depends: perl, netbase, adduser, update-inetd, ${misc:Depends}
 Conflicts: cfingerd, fingerd, xfingerd, efingerd
 Suggests: finger
 Description: A simple, flexible and safe finger daemon
