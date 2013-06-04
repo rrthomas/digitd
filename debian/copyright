@@ -1,7 +1,8 @@
-This package was written by Radovan Garabík (garabik@melkor.dnp.fmph.uniba.sk).
-It is based on ident2 by Michael Bacarella.
+This package was written by Reuben Thomas <rrt@sc3d.org>
 
-Copyright © Radovan Garabík
+It was based on efingerd by Radovan Garabík (garabik@melkor.dnp.fmph.uniba.sk).
+
+Copyright © Reuben Thomas
 
 released under GPL (see /usr/share/common-licenses/GPL)
 
