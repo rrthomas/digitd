@@ -1,7 +1,7 @@
 Source: digitd
 Section: net
 Priority: optional
-Maintainer: Reuben Thomas <rrt@sc3d.org>
+Maintainer: Radovan Garabík <garabik@melkor.dnp.fmph.uniba.sk>
 Standards-Version: 3.8.3
 Build-Depends: debhelper (>= 9)
 
