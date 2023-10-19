@@ -1,1 +1,5 @@
-debian/changelog
+digitd (1.0) unstable; urgency=low
+
+  * First release.
+
+ -- Reuben Thomas <rrt@sc3d.org>  Thu, 30 May 2013 13:13:13 +0100

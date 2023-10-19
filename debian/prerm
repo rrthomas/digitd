@@ -1,8 +1,0 @@
-#! /bin/sh
-# pre removal script for the Debian GNU/Linux digitd package
-
-set -e
-
-update-inetd --remove 'finger\t.*'
-
-#DEBHELPER#

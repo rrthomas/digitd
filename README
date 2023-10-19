@@ -20,20 +20,10 @@ RFC 1288: http://tools.ietf.org/html/rfc1288
 See the man page digitd(8) for more information.
 
 
-Installation on Debian/Ubuntu
-=============================
+Installation
+============
 
-Unpack the source, change to the top-level source directory, then
-type:
-
-  dpkg-buildpackage
-  sudo dpkg -i ../digitd*deb
-
-
-Generic installation
-====================
-
-Requirements: Perl on a system supporting syslog (Linux, Mac OS X,…)
+Requirements: Perl on a system supporting syslog (GNU/Linux, macOS,…)
 
 1) As root, type: make install
 
